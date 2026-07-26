@@ -1,0 +1,23 @@
+[
+  {
+    "id": "nissan-gtr-r35",
+    "brand": "Nissan",
+    "name": "GT-R R35",
+    "year": "2025",
+    "country": "Japan",
+    "countryFlag": "jp",
+    "price": "$130,000 - $230,000",
+    "topSpeed": "196 - 205 mph (315 - 330 km/h)",
+    "zeroToHundred": "2.5s - 2.9s (0-60 mph)",
+    "image": "assets/cars/nissan-gtr-r35.png",
+    "summary": "The 2025 Nissan GT-R R35 marks the final, highly refined iteration of the legendary platform, likely concluding with special T-spec and NISMO editions.",
+    "specs": [
+      { "label": "Engine", "value": "Hand-built 3.8-liter twin-turbo V6 (VR38DETT)" },
+      { "label": "Performance", "value": "Premium Edition: 565 horsepower and 467 lb-ft of torque. NISMO/T-spec: 600 horsepower and 481 lb-ft of torque." },
+      { "label": "Drivetrain", "value": "ATTESA E-TS all-wheel-drive system with a 6-speed dual-clutch rear transaxle." },
+      { "label": "2025 Changes (JDM/T-spec)", "value": "Introduction of new T-spec and Track Edition models with special NISMO-tuned suspension, carbon ceramic brakes, and enhanced, lighter engine components (piston rings, connecting rods)." },
+      { "label": "Exterior", "value": "Updated aerodynamics, featuring a revised front bumper, grille, and a new, larger rear wing for the Nismo/T-spec variants." },
+      { "label": "Interior", "value": "Combination of Alcantara and leather, with special Blue Heaven interior color options for T-spec models." }
+    ]
+  }
+]
