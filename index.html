@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>specdrive | Nerdifying the automotive culture</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Exact Requested Google Fonts: Bebas Neue, Oswald, Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        c1: '#0A0A0A',
+                        c2: '#121212',
+                        r1: '#C1121F',
+                        r2: '#D90429',
+                        r3: '#EF233C'
+                    },
+                    fontFamily: {
+                        logo: ['Bebas Neue', 'sans-serif'],
+                        heading: ['Oswald', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Exact color scheme variables */
+        :root {
+            --bg-main: #0A0A0A;
+            --bg-card: #121212;
+            --red-dark: #C1121F;
+            --red-mid: #D90429;
+            --red-bright: #EF233C;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Hero Background Styling using dark tint overlay matching the GT-R background */
+        .hero-bg {
+            background: linear-gradient(180deg, rgba(10, 10, 10, 0.82) 0%, rgba(10, 10, 10, 0.94) 100%),
+                        url('image_7fe35f.jpg') center/cover no-repeat;
+        }
+
+        /* Clean borders without glow effects */
+        .clean-border {
+            border: 1px solid #1f1f1f;
+        }
+
+        .clean-border-red {
+            border: 1px solid var(--red-dark);
+        }
+
+        .clean-border-red:hover {
+            border-color: var(--red-bright);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C1121F;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-c1 text-white min-h-screen flex flex-col justify-between font-body selection:bg-r2 selection:text-white">
+
+    <!-- HEADER NAVBAR (Top Left: Logo, Top Right: About + Menu) -->
+    <header class="w-full bg-c2/90 border-b border-[#1A1A1A] sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            
+            <!-- TOP LEFT LOGO: Logo Image + "specdrive" in Bebas Neue -->
+            <a href="#" onclick="switchView('home')" class="flex items-center gap-3 group text-decoration-none">
+                <img src="spec.drive logo_2.png" 
+                     alt="spec.drive logo" 
+                     onerror="this.onerror=null; this.src='spec.drive logo.png';"
+                     class="w-10 h-10 rounded-full border border-r1 object-cover">
+                <span class="font-logo text-3xl tracking-wider text-white uppercase group-hover:text-r3 transition-colors">
+                    spec<span class="text-r2">drive</span>
+                </span>
+            </a>
+
+            <!-- TOP RIGHT: About Link + Menu Hamburger Icon (=) -->
+            <div class="flex items-center gap-6">
+                <a href="#" 
+                   id="nav-about-btn"
+                   onclick="switchView('about')" 
+                   class="font-heading text-lg tracking-wider text-white hover:text-r3 transition-colors uppercase">
+                    About
+                </a>
+                
+                <button onclick="toggleMobileMenu()" class="text-white hover:text-r2 p-2 focus:outline-none" aria-label="Menu">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobileMenu" class="hidden bg-c2 border-b border-[#1A1A1A] px-6 py-4 space-y-3 font-heading text-lg">
+            <a href="#" onclick="switchView('home'); toggleMobileMenu()" class="block text-white hover:text-r2">HOME</a>
+            <a href="#" onclick="switchView('about'); toggleMobileMenu()" class="block text-r2">ABOUT</a>
+        </div>
+    </header>
+
+    <main class="flex-grow relative">
+        
+        <!-- PAGE 1: HOMEPAGE (Matching Sketch) -->
+        <div id="page-home" class="hero-bg min-h-[calc(100vh-80px)] flex flex-col items-center justify-center px-4 py-16 text-center">
+            
+            <div class="max-w-4xl mx-auto space-y-8 w-full flex flex-col items-center">
+                
+                <!-- CENTER HERO: "Nerdifying the automotive culture" in Oswald Bold -->
+                <h1 class="font-heading font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white uppercase leading-tight max-w-3xl">
+                    Nerdifying the <br>
+                    <span class="text-r2">automotive culture</span>
+                </h1>
+
+                <!-- CENTER SEARCH BAR (Matching Large Search Bar in Sketch) -->
+                <div class="w-full max-w-2xl px-2">
+                    <div class="relative flex items-center">
+                        <input type="text" 
+                               id="heroSearchInput"
+                               placeholder="Search engine code, chassis, specs..." 
+                               oninput="handleSearch(this.value)"
+                               class="w-full bg-c2 text-white placeholder-gray-400 font-body text-base md:text-lg rounded-full py-4 pl-14 pr-32 border border-r1 focus:border-r3 focus:outline-none transition-all">
+                        
+                        <i class="fa-solid fa-magnifying-glass absolute left-5 text-r2 text-xl pointer-events-none"></i>
+                        
+                        <button onclick="performSearch()" 
+                        class="absolute right-2 px-6 py-2.5 bg-r1 hover:bg-r2 text-white font-heading text-lg uppercase rounded-full transition-colors">
+                    Search
+                </button>
+            </div>
+        </div>
+
+        <!-- Country Flags Row (Italy, Germany, USA, Britain, Japan, France, Sweden) -->
+        <div class="flex items-center justify-center gap-3 sm:gap-5 pt-2 pb-1 flex-wrap">
+            <div class="group cursor-pointer" onclick="filterByCountry('Italy')" title="Italy">
+                <div class="w-[60px] h-[40px] rounded overflow-hidden border border-[#222222] group-hover:border-r2 transition-all">
+                    <img src="https://flagcdn.com/w80/it.png" alt="Italy" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="group cursor-pointer" onclick="filterByCountry('Germany')" title="Germany">
+                <div class="w-[60px] h-[40px] rounded overflow-hidden border border-[#222222] group-hover:border-r2 transition-all">
+                    <img src="https://flagcdn.com/w80/de.png" alt="Germany" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="group cursor-pointer" onclick="filterByCountry('USA')" title="USA">
+                <div class="w-[60px] h-[40px] rounded overflow-hidden border border-[#222222] group-hover:border-r2 transition-all">
+                    <img src="https://flagcdn.com/w80/us.png" alt="USA" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="group cursor-pointer" onclick="filterByCountry('Britain')" title="Britain">
+                <div class="w-[60px] h-[40px] rounded overflow-hidden border border-[#222222] group-hover:border-r2 transition-all">
+                    <img src="https://flagcdn.com/w80/gb.png" alt="Britain" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="group cursor-pointer" onclick="filterByCountry('Japan')" title="Japan">
+                <div class="w-[60px] h-[40px] rounded overflow-hidden border border-[#222222] group-hover:border-r2 transition-all">
+                    <img src="https://flagcdn.com/w80/jp.png" alt="Japan" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="group cursor-pointer" onclick="filterByCountry('France')" title="France">
+                <div class="w-[60px] h-[40px] rounded overflow-hidden border border-[#222222] group-hover:border-r2 transition-all">
+                    <img src="https://flagcdn.com/w80/fr.png" alt="France" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="group cursor-pointer" onclick="filterByCountry('Sweden')" title="Sweden">
+                <div class="w-[60px] h-[40px] rounded overflow-hidden border border-[#222222] group-hover:border-r2 transition-all">
+                    <img src="https://flagcdn.com/w80/se.png" alt="Sweden" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Search Results Card -->
+        <div id="searchResultsCard" class="hidden w-full max-w-2xl bg-c2 border border-[#1F1F1F] rounded-2xl p-4 text-left font-body text-sm space-y-2 mt-2">
+            <!-- Populated via JavaScript -->
+        </div>
+
+            </div>
+
+        </div>
+
+        <!-- PAGE 2: ABOUT PAGE (Blank view as requested) -->
+        <div id="page-about" class="hidden min-h-[calc(100vh-160px)] p-8 max-w-5xl mx-auto flex flex-col justify-center">
+            <div class="bg-c2 border border-[#1F1F1F] rounded-2xl p-8 md:p-12 space-y-6">
+                <h2 class="font-heading font-bold text-4xl text-white uppercase border-b border-[#1F1F1F] pb-4">
+                    About <span class="text-r2">specdrive</span>
+                </h2>
+                
+                <!-- Blank Page View Placeholder -->
+                <div class="py-16 text-center border border-dashed border-[#222222] rounded-xl bg-c1/50">
+                    <i class="fa-solid fa-circle-info text-3xl text-r1 mb-3"></i>
+                    <p class="font-heading text-xl text-gray-300 uppercase">About Page View</p>
+                    <p class="text-gray-500 text-sm mt-1">This page is intentionally blank for now.</p>
+                </div>
+
+                <div>
+                    <button onclick="switchView('home')" class="px-6 py-2.5 bg-r1 hover:bg-r2 text-white font-heading text-base uppercase rounded-lg transition-colors">
+                        ← Return to Home
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-c2 border-t border-[#1A1A1A] py-6 text-center text-xs text-gray-500 font-body">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="font-logo text-xl text-white tracking-wider">
+                spec<span class="text-r2">drive</span>
+            </div>
+            <div>
+                © 2026 specdrive • Nerdifying the automotive culture
+            </div>
+            <div class="flex gap-4 text-gray-400">
+                <a href="#" class="hover:text-r2"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="hover:text-r2"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" class="hover:text-r2"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Car database for search functionality
+        const carDatabase = [
+            { name: "Porsche 911 GT3 RS", engine: "4.0L Flat-6 NA", power: "525 HP", country: "Germany" },
+            { name: "BMW M8 Competition", engine: "4.4L V8 Twin-Turbo (S63)", power: "625 HP", country: "Germany" },
+            { name: "Nissan GT-R Nismo (R35)", engine: "3.8L V6 Twin-Turbo (VR38DETT)", power: "600 HP", country: "Japan" },
+            { name: "Pagani Huayra R", engine: "6.0L V12 NA", power: "850 HP", country: "Italy" },
+            { name: "Ford GT", engine: "3.5L Twin-Turbo V6", power: "660 HP", country: "USA" },
+            { name: "Aston Martin Valkyrie", engine: "6.5L V12 NA", power: "1160 HP", country: "Britain" },
+            { name: "Bugatti Chiron Super Sport", engine: "8.0L Quad-Turbo W16", power: "1600 HP", country: "France" },
+            { name: "Koenigsegg Jesko Absolut", engine: "5.0L Twin-Turbo V8", power: "1600 HP", country: "Sweden" }
+        ];
+
+        function filterByCountry(country) {
+            const searchInput = document.getElementById('heroSearchInput');
+            searchInput.value = country;
+            handleSearch(country);
+        }
+
+        // Toggle between Home and Blank About page
+        function switchView(view) {
+            const homePage = document.getElementById('page-home');
+            const aboutPage = document.getElementById('page-about');
+            const navAboutBtn = document.getElementById('nav-about-btn');
+
+            if (view === 'about') {
+                homePage.classList.add('hidden');
+                aboutPage.classList.remove('hidden');
+                navAboutBtn.classList.add('text-r2');
+            } else {
+                aboutPage.classList.add('hidden');
+                homePage.classList.remove('hidden');
+                navAboutBtn.classList.remove('text-r2');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Toggle mobile drawer
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Search Handler
+        function handleSearch(query) {
+            const resultsCard = document.getElementById('searchResultsCard');
+            const q = query.toLowerCase().trim();
+
+            if (!q) {
+                resultsCard.classList.add('hidden');
+                return;
+            }
+
+            const matches = carDatabase.filter(car => 
+                car.name.toLowerCase().includes(q) || 
+                car.engine.toLowerCase().includes(q) ||
+                car.country.toLowerCase().includes(q)
+            );
+
+            resultsCard.classList.remove('hidden');
+
+            if (matches.length === 0) {
+                resultsCard.innerHTML = `<div class="text-gray-400 p-2">No specs found matching "${query}". Try searching "S63", "V6", or "GT3".</div>`;
+                return;
+            }
+
+            resultsCard.innerHTML = matches.map(car => `
+                <div class="p-3 bg-c1 rounded-lg border border-[#1f1f1f] flex justify-between items-center hover:border-r1 transition-colors cursor-pointer">
+                    <div>
+                        <div class="font-heading font-bold text-white text-base">${car.name}</div>
+                        <div class="text-gray-400 text-xs">${car.engine} • ${car.power} (${car.country})</div>
+                    </div>
+                    <span class="text-r2 font-heading text-xs uppercase">View Spec →</span>
+                </div>
+            `).join('');
+        }
+
+        function performSearch() {
+            const val = document.getElementById('heroSearchInput').value;
+            handleSearch(val);
+        }
+    </script>
+</body>
+</html>
