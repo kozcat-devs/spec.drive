@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>specdrive | Nerdifying the automotive culture</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts: Bebas Neue, Oswald, Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        c1: '#0A0A0A',
+                        c2: '#121212',
+                        r1: '#C1121F',
+                        r2: '#D90429',
+                        r3: '#EF233C'
+                    },
+                    fontFamily: {
+                        logo: ['Bebas Neue', 'sans-serif'],
+                        heading: ['Oswald', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg-main: #0A0A0A;
+            --bg-card: #121212;
+            --red-dark: #C1121F;
+            --red-mid: #D90429;
+            --red-bright: #EF233C;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Hero Background with dark GT-R overlay */
+        .hero-bg {
+            background: linear-gradient(180deg, rgba(10, 10, 10, 0.82) 0%, rgba(10, 10, 10, 0.95) 100%),
+                        url('bgcar.jpg') center/cover no-repeat;
+        }
+
+        /* Clean borders without neon or glowing effects */
+        .clean-border {
+            border: 1px solid #1f1f1f;
+        }
+
+        .clean-border-red {
+            border: 1px solid var(--red-dark);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C1121F;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-c1 text-white min-h-screen flex flex-col justify-between font-body selection:bg-r2 selection:text-white">
+
+    <!-- ======================================================= -->
+    <!-- SECTION: HEADER NAVBAR                                   -->
+    <!-- ======================================================= -->
+    <header class="w-full bg-c2/90 border-b border-[#1A1A1A] sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
+
+            <!-- ---- SUBSECTION: LOGO (top left) ---- -->
+            <a href="#" onclick="showView('home')" class="flex items-center gap-3 group text-decoration-none shrink-0">
+                <img src="spec.drive logo.png"
+                     alt="spec.drive logo"
+                     onerror="this.onerror=null; this.src='spec.drive logo_2.png';"
+                     class="w-10 h-10 rounded-full border border-r1 object-cover">
+                <span class="font-logo text-3xl tracking-wider text-white uppercase group-hover:text-r3 transition-colors">
+                    spec<span class="text-r2">drive</span>
+                </span>
+            </a>
+
+            <!-- ---- SUBSECTION: INSTAGRAM ANNOUNCEMENT BADGE (center) ---- -->
+            <div class="hidden md:inline-flex items-center gap-2 lg:gap-3 bg-c1/80 border border-[#222222] hover:border-r1 rounded-full px-3.5 py-1.5 text-xs transition-all shadow-md">
+                <i class="fa-brands fa-instagram text-r3 text-sm"></i>
+                <span class="text-gray-300 font-body text-xs lg:text-sm" data-i18n="igBanner">Check out the official instagram page!</span>
+                <a href="https://www.instagram.com/spec.drive/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="bg-r1 hover:bg-r2 text-white font-heading px-3 py-1 rounded-full text-xs uppercase tracking-wider transition-colors shrink-0"
+                   data-i18n="igBannerBtn">
+                    Click Here
+                </a>
+            </div>
+
+            <!-- ---- SUBSECTION: TOP RIGHT CLUSTER: About + Library (NEW) + Language Switcher + Menu Icon ---- -->
+            <div class="flex items-center gap-4 sm:gap-6 shrink-0">
+                <a href="#"
+                   id="nav-about-btn"
+                   onclick="showView('about')"
+                   class="font-heading text-lg tracking-wider text-white hover:text-r3 transition-colors uppercase"
+                   data-i18n="navAbout">
+                    About
+                </a>
+
+                <!-- ==== NEW: LIBRARY NAV LINK ==== -->
+                <a href="#"
+                   id="nav-library-btn"
+                   onclick="showView('library')"
+                   class="font-heading text-lg tracking-wider text-white hover:text-r3 transition-colors uppercase"
+                   data-i18n="navLibrary">
+                    Library
+                </a>
+                <!-- ==== END NEW: LIBRARY NAV LINK ==== -->
+
+                <!-- LANGUAGE SWITCHER (desktop) -->
+                <div class="relative" id="langSwitcherWrap">
+                    <button onclick="toggleLangMenu()"
+                            id="langSwitcherBtn"
+                            aria-label="Change language"
+                            class="flex items-center gap-1.5 bg-c1/80 border border-[#222222] hover:border-r1 rounded-full pl-1.5 pr-2.5 py-1.5 transition-all">
+                        <img id="langFlagIcon" src="https://flagcdn.com/w40/gb.png" alt="EN" class="w-6 h-4 rounded-sm object-cover border border-[#2a2a2a]">
+                        <i class="fa-solid fa-chevron-down text-[10px] text-gray-400"></i>
+                    </button>
+
+                    <div id="langMenu" class="hidden absolute right-0 mt-2 w-40 bg-c2 border border-[#222222] rounded-lg shadow-2xl overflow-hidden z-50">
+                        <button onclick="setLanguage('en')" class="w-full flex items-center gap-2 px-3 py-2.5 hover:bg-c1 text-sm text-white transition-colors">
+                            <img src="https://flagcdn.com/w40/gb.png" alt="EN" class="w-6 h-4 rounded-sm object-cover border border-[#2a2a2a]"> English
+                        </button>
+                        <button onclick="setLanguage('de')" class="w-full flex items-center gap-2 px-3 py-2.5 hover:bg-c1 text-sm text-white transition-colors">
+                            <img src="https://flagcdn.com/w40/de.png" alt="DE" class="w-6 h-4 rounded-sm object-cover border border-[#2a2a2a]"> Deutsch
+                        </button>
+                        <button onclick="setLanguage('fr')" class="w-full flex items-center gap-2 px-3 py-2.5 hover:bg-c1 text-sm text-white transition-colors">
+                            <img src="https://flagcdn.com/w40/fr.png" alt="FR" class="w-6 h-4 rounded-sm object-cover border border-[#2a2a2a]"> Français
+                        </button>
+                    </div>
+                </div>
+
+                <button onclick="toggleMobileMenu()" class="text-white hover:text-r2 p-2 focus:outline-none" aria-label="Menu">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- ---- SUBSECTION: MOBILE DRAWER ---- -->
+        <div id="mobileMenu" class="hidden bg-c2 border-b border-[#1A1A1A] px-6 py-4 space-y-3 font-heading text-lg">
+            <div class="md:hidden flex items-center justify-between bg-c1 border border-[#222222] rounded-lg p-3 text-xs mb-2">
+                <div class="flex items-center gap-2">
+                    <i class="fa-brands fa-instagram text-r3"></i>
+                    <span class="text-gray-300" data-i18n="igMobileLabel">Instagram page</span>
+                </div>
+                <a href="https://www.instagram.com/spec.drive/" target="_blank" class="bg-r1 text-white font-heading px-2 py-1 rounded text-xs" data-i18n="igMobileBtn">VISIT →</a>
+            </div>
+            <a href="#" onclick="showView('home'); toggleMobileMenu()" class="block text-white hover:text-r2" data-i18n="mobileHome">HOME</a>
+            <a href="#" onclick="showView('about'); toggleMobileMenu()" class="block text-r2" data-i18n="mobileAbout">ABOUT</a>
+            <!-- NEW: mobile Library link -->
+            <a href="#" onclick="showView('library'); toggleMobileMenu()" class="block text-white hover:text-r2" data-i18n="navLibrary">LIBRARY</a>
+            <!-- NEW: Compare Bay link, opened from the hamburger menu -->
+            <a href="#" onclick="showView('compare'); toggleMobileMenu()" class="block text-white hover:text-r2" data-i18n="navCompare">COMPARE BAY</a>
+
+            <div class="flex items-center gap-2 pt-2 border-t border-[#1A1A1A] mt-2">
+                <button onclick="setLanguage('en')" class="flex items-center gap-1.5 bg-c1 border border-[#222222] hover:border-r1 rounded-full px-2.5 py-1.5 text-xs">
+                    <img src="https://flagcdn.com/w40/gb.png" alt="EN" class="w-5 h-3.5 rounded-sm object-cover">EN
+                </button>
+                <button onclick="setLanguage('de')" class="flex items-center gap-1.5 bg-c1 border border-[#222222] hover:border-r1 rounded-full px-2.5 py-1.5 text-xs">
+                    <img src="https://flagcdn.com/w40/de.png" alt="DE" class="w-5 h-3.5 rounded-sm object-cover">DE
+                </button>
+                <button onclick="setLanguage('fr')" class="flex items-center gap-1.5 bg-c1 border border-[#222222] hover:border-r1 rounded-full px-2.5 py-1.5 text-xs">
+                    <img src="https://flagcdn.com/w40/fr.png" alt="FR" class="w-5 h-3.5 rounded-sm object-cover">FR
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow relative">
+
+        <!-- ======================================================= -->
+        <!-- SECTION: PAGE 1 - HOMEPAGE                               -->
+        <!-- ======================================================= -->
+        <div id="page-home" class="hero-bg min-h-[calc(100vh-80px)] flex flex-col items-center justify-center px-4 py-12 text-center">
+
+            <div class="max-w-4xl mx-auto space-y-6 w-full flex flex-col items-center">
+
+                <!-- ---- SUBSECTION: HERO HEADING ---- -->
+                <h1 class="font-heading font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white uppercase leading-tight max-w-3xl">
+                    <span data-i18n="heroLine1">Nerdifying the</span> <br>
+                    <span class="text-r2" data-i18n="heroLine2">automotive culture</span>
+                </h1>
+
+                <!-- ---- SUBSECTION: TAGLINE ---- -->
+                <p class="font-heading text-base md:text-xl text-gray-400 tracking-widest uppercase -mt-2" data-i18n="tagline">
+                    one car at a time...
+                </p>
+
+                <!-- ---- SUBSECTION: CENTER SEARCH BAR ---- -->
+                <!-- Now searches both the car database (data/cars.json) and the brand list (data/brands.json). -->
+                <div class="w-full max-w-2xl px-2 pt-2">
+                    <div class="relative flex items-center">
+                        <input type="text"
+                               id="heroSearchInput"
+                               placeholder=""
+                               aria-label="Search for vehicle"
+                               oninput="handleSearch(this.value); updateAnimatedPlaceholder();"
+                               onkeydown="if(event.key==='Enter'){ performSearch(); }"
+                               class="w-full bg-c2 text-white placeholder-gray-400 font-body text-base md:text-lg rounded-full py-4 pl-14 pr-32 border border-r1 focus:border-r3 focus:outline-none transition-all">
+
+                        <i class="fa-solid fa-magnifying-glass absolute left-5 text-r2 text-xl pointer-events-none"></i>
+
+                        <!-- Animated rotating example searches, fades over the placeholder while the box is empty -->
+                        <div id="animatedPlaceholder" class="absolute left-14 right-32 pointer-events-none font-body text-base md:text-lg text-gray-500 truncate">
+                            <span id="animatedPlaceholderText" class="inline-block transition-opacity duration-500 ease-in-out opacity-100"></span>
+                        </div>
+
+                        <button onclick="performSearch()"
+                                class="absolute right-2 px-6 py-2.5 bg-r1 hover:bg-r2 text-white font-heading text-lg uppercase rounded-full transition-colors"
+                                data-i18n="searchBtn">
+                            Search
+                        </button>
+                    </div>
+
+                    <!-- Search Results Popup -->
+                    <div id="searchResultsCard" class="hidden mt-3 bg-c2 border border-[#222222] rounded-xl p-4 text-left space-y-2 max-h-72 overflow-y-auto shadow-2xl"></div>
+                </div>
+
+                <!-- ---- SUBSECTION: COUNTRY FLAGS ROW ---- -->
+                <div class="flex items-center justify-center gap-3 sm:gap-5 pt-3 pb-1 flex-wrap">
+                    <div class="group cursor-pointer" onclick="filterByCountry('Italy')" title="Italy">
+                        <div class="w-[60px] h-[40px] rounded overflow-hidden border border-[#222222] group-hover:border-r2 transition-all">
+                            <img src="https://flagcdn.com/w80/it.png" alt="Italy" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <div class="group cursor-pointer" onclick="filterByCountry('Germany')" title="Germany">
+                        <div class="w-[60px] h-[40px] rounded overflow-hidden border border-[#222222] group-hover:border-r2 transition-all">
+                            <img src="https://flagcdn.com/w80/de.png" alt="Germany" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <div class="group cursor-pointer" onclick="filterByCountry('USA')" title="USA">
+                        <div class="w-[60px] h-[40px] rounded overflow-hidden border border-[#222222] group-hover:border-r2 transition-all">
+                            <img src="https://flagcdn.com/w80/us.png" alt="USA" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <div class="group cursor-pointer" onclick="filterByCountry('Britain')" title="Britain">
+                        <div class="w-[60px] h-[40px] rounded overflow-hidden border border-[#222222] group-hover:border-r2 transition-all">
+                            <img src="https://flagcdn.com/w80/gb.png" alt="Britain" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <div class="group cursor-pointer" onclick="filterByCountry('Japan')" title="Japan">
+                        <div class="w-[60px] h-[40px] rounded overflow-hidden border border-[#222222] group-hover:border-r2 transition-all">
+                            <img src="https://flagcdn.com/w80/jp.png" alt="Japan" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <div class="group cursor-pointer" onclick="filterByCountry('France')" title="France">
+                        <div class="w-[60px] h-[40px] rounded overflow-hidden border border-[#222222] group-hover:border-r2 transition-all">
+                            <img src="https://flagcdn.com/w80/fr.png" alt="France" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <div class="group cursor-pointer" onclick="filterByCountry('Sweden')" title="Sweden">
+                        <div class="w-[60px] h-[40px] rounded overflow-hidden border border-[#222222] group-hover:border-r2 transition-all">
+                            <img src="https://flagcdn.com/w80/se.png" alt="Sweden" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <div class="group cursor-pointer" onclick="filterByCountry('Australia')" title="Australia">
+                        <div class="w-[60px] h-[40px] rounded overflow-hidden border border-[#222222] group-hover:border-r2 transition-all">
+                            <img src="https://flagcdn.com/w80/au.png" alt="Australia" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ======================================================= -->
+        <!-- SECTION: PAGE 2 - ABOUT PAGE                              -->
+        <!-- ======================================================= -->
+        <div id="page-about" class="hidden min-h-[calc(100vh-160px)] p-4 md:p-8 max-w-4xl mx-auto flex flex-col justify-center my-6">
+            <div class="bg-c2 border border-[#1F1F1F] rounded-2xl p-6 md:p-10 space-y-6 shadow-2xl">
+                <h2 class="font-heading font-bold text-3xl md:text-5xl text-white uppercase border-b border-[#1F1F1F] pb-4 tracking-wide">
+                    <span data-i18n="aboutTitlePrefix">About</span> <span class="text-r2">specdrive</span>
+                </h2>
+
+                <div class="font-heading text-gray-200 text-lg md:text-xl space-y-4 leading-relaxed font-normal">
+                    <p data-i18n="aboutP1">
+                        Spec.drive was created on April 13th, 2026, with a simple passion: sharing the incredible world of automobiles with people around the globe.
+                    </p>
+                    <p data-i18n="aboutP2">
+                        The journey started with our very first post, featuring the specifications of the legendary Nissan GT-R R35. What began as a small project from Sri Lanka quickly grew into a place where car enthusiasts could discover, learn, and appreciate the engineering behind some of the world's most amazing machines.
+                    </p>
+                    <p data-i18n="aboutP3">
+                        The goal of Spec.drive is to give both car enthusiasts and beginners a quick glimpse into how bizarre, innovative, and fascinating the automotive industry really is. Every car has something unique — whether it's a groundbreaking engine, a racing legacy, a crazy design, or a story behind its creation.
+                    </p>
+                    <p data-i18n="aboutP4">
+                        Our mission is to cover as many vehicles as possible and build a community for people who love exploring car specifications, performance, history, and automotive technology.
+                    </p>
+                    <p class="text-white pt-2 font-medium" data-i18n="aboutP5">
+                        This is only the beginning. We have many more exciting things planned, so stay tuned...
+                    </p>
+                    <p class="text-r3 font-bold" data-i18n="aboutP6">
+                        More new things to come ;)
+                    </p>
+                    <div class="pt-4 text-gray-400 text-base md:text-lg border-t border-[#1F1F1F] flex flex-col sm:flex-row justify-between gap-1">
+                        <span data-i18n="aboutFounderLabel">- Founder of spec.drive</span>
+                        <span class="text-r2 font-bold">7/26/2026</span>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-c1 border border-r1/50 hover:border-r1 rounded-xl p-5 transition-all">
+                    <p class="font-heading font-bold text-lg md:text-xl text-white uppercase tracking-wider mb-2 flex items-center gap-2" data-i18n="aboutVideoLabel">
+                        <i class="fa-brands fa-instagram text-r3"></i>
+                        Check out our first ever video! - The Nissan GT-R R35
+                    </p>
+                    <a href="https://www.instagram.com/p/DWtBRp4EXo7/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="font-heading font-bold text-r2 hover:text-r3 text-base md:text-lg underline underline-offset-4 break-all transition-colors block">
+                        https://www.instagram.com/p/DWtBRp4EXo7/
+                    </a>
+                </div>
+
+                <div class="pt-2">
+                    <button onclick="showView('home')" class="px-6 py-2.5 bg-r1 hover:bg-r2 text-white font-heading text-base uppercase rounded-lg transition-colors" data-i18n="returnHome">
+                        ← Return to Home
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================= -->
+        <!-- SECTION: PAGE 3 - SPEC LIBRARY (NEW)                      -->
+        <!-- Brand grid, built from data/brands.json + data/cars.json  -->
+        <!-- ======================================================= -->
+        <div id="page-library" class="hidden min-h-[calc(100vh-160px)] p-4 md:p-8 max-w-6xl mx-auto my-6">
+            <h2 class="font-heading font-bold text-3xl md:text-5xl text-white uppercase tracking-wide mb-2" data-i18n="libraryTitle">
+                Spec Library
+            </h2>
+            <p class="text-gray-400 font-body mb-8" data-i18n="librarySubtitle">
+                Browse by brand. New models get added over time.
+            </p>
+
+            <!-- Brand cards get injected here by renderLibrary() in the JS section below -->
+            <div id="brandGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"></div>
+        </div>
+
+        <!-- ======================================================= -->
+        <!-- SECTION: PAGE 4 - BRAND PAGE (NEW)                        -->
+        <!-- Model list for a single brand, injected by renderBrandPage() -->
+        <!-- ======================================================= -->
+        <div id="page-brand" class="hidden min-h-[calc(100vh-160px)] p-4 md:p-8 max-w-6xl mx-auto my-6">
+            <button onclick="showView('library')" class="mb-6 px-4 py-2 bg-c2 border border-[#222222] hover:border-r1 text-white font-heading text-sm uppercase rounded-lg transition-colors" data-i18n="backToLibrary">
+                ← Back to Library
+            </button>
+            <div id="brandPageContent"></div>
+        </div>
+
+        <!-- ======================================================= -->
+        <!-- SECTION: PAGE 5 - CAR DETAIL PAGE (NEW)                   -->
+        <!-- Single car spec sheet, injected by renderCarPage()        -->
+        <!-- ======================================================= -->
+        <div id="page-car" class="hidden min-h-[calc(100vh-160px)] p-4 md:p-8 max-w-4xl mx-auto my-6">
+            <button id="carBackBtn" onclick="showView('library')" class="mb-6 px-4 py-2 bg-c2 border border-[#222222] hover:border-r1 text-white font-heading text-sm uppercase rounded-lg transition-colors" data-i18n="backToLibrary">
+                ← Back to Library
+            </button>
+            <div id="carPageContent"></div>
+        </div>
+
+        <!-- ======================================================= -->
+        <!-- SECTION: PAGE 6 - COMPARE BAY (NEW)                       -->
+        <!-- Pick any 2 cars from the database, compare their stats    -->
+        <!-- ======================================================= -->
+        <div id="page-compare" class="hidden min-h-[calc(100vh-160px)] p-4 md:p-8 max-w-5xl mx-auto my-6">
+            <h2 class="font-heading font-bold text-3xl md:text-5xl text-white uppercase tracking-wide mb-2" data-i18n="compareTitle">
+                Compare Bay
+            </h2>
+            <p class="text-gray-400 font-body mb-8" data-i18n="compareSubtitle">
+                Pick any two cars from the database and see how they stack up.
+            </p>
+
+            <div class="grid sm:grid-cols-2 gap-4 mb-8">
+                <select id="compareSelectA" onchange="renderComparePage()" class="w-full bg-c2 text-white border border-[#222222] focus:border-r1 focus:outline-none rounded-lg px-4 py-3 font-body">
+                    <option value="">Choose the first car...</option>
+                </select>
+                <select id="compareSelectB" onchange="renderComparePage()" class="w-full bg-c2 text-white border border-[#222222] focus:border-r1 focus:outline-none rounded-lg px-4 py-3 font-body">
+                    <option value="">Choose the second car...</option>
+                </select>
+            </div>
+
+            <div id="compareResult"></div>
+        </div>
+
+    </main>
+
+    <!-- ======================================================= -->
+    <!-- SECTION: FOOTER                                           -->
+    <!-- ======================================================= -->
+    <footer class="bg-c2 border-t border-[#1A1A1A] py-6 text-center text-xs text-gray-500 font-body">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="font-logo text-xl text-white tracking-wider">
+                spec<span class="text-r2">drive</span>
+            </div>
+            <div>
+                © 2026 specdrive (^._.^)ﾉ • <span data-i18n="footerTagline">Nerdifying the automotive culture</span>
+            </div>
+            <div class="flex gap-4 text-gray-400">
+                <a href="https://www.instagram.com/spec.drive/" target="_blank" class="hover:text-r2"><i class="fa-brands fa-instagram"></i></a>
+                <a href="mailto:spec.drive.official@gmail.com" class="hover:text-r2 flex items-center gap-1.5">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span data-i18n="footerContactLabel">Contact</span> - spec.drive.official@gmail.com
+                </a>
+                <a href="#" class="hover:text-r2"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===================================================
+        // SECTION: DATABASE LOADING (NEW)
+        // Pulls data/cars.json and data/brands.json at page load.
+        // These two files are the database — edit them directly,
+        // this script only ever reads them.
+        // NOTE: fetch() needs the page served over http(s). Opening
+        // index.html by double-clicking it (file://) will fail with
+        // a CORS error — run a local server or test on GitHub Pages.
+        // ===================================================
+        let cars = [];
+        let brands = [];
+
+        async function loadDatabase() {
+            try {
+                const [carsRes, brandsRes] = await Promise.all([
+                    fetch('data/cars.json'),
+                    fetch('data/brands.json')
+                ]);
+                cars = await carsRes.json();
+                brands = await brandsRes.json();
+                renderLibrary();
+                populateCompareSelects();
+            } catch (err) {
+                console.error('Could not load the car database. If you are opening this file directly (file://), run a local server instead — see the README.', err);
+            }
+        }
+
+        // ===================================================
+        // SECTION: ANIMATED SEARCH PLACEHOLDER (NEW)
+        // Rotates through example queries with a fade transition,
+        // and hides itself the moment the user starts typing.
+        // ===================================================
+        let placeholderIndex = 0;
+        let placeholderTimer = null;
+
+        function startPlaceholderRotation() {
+            const examples = translations[currentLang].searchExamples || [];
+            const textEl = document.getElementById('animatedPlaceholderText');
+            if (textEl && examples.length) textEl.textContent = examples[0];
+
+            if (placeholderTimer) clearInterval(placeholderTimer);
+            placeholderTimer = setInterval(cyclePlaceholder, 2800);
+        }
+
+        function cyclePlaceholder() {
+            const textEl = document.getElementById('animatedPlaceholderText');
+            if (!textEl) return;
+            const examples = translations[currentLang].searchExamples || [];
+            if (!examples.length) return;
+
+            textEl.classList.remove('opacity-100');
+            textEl.classList.add('opacity-0');
+            setTimeout(() => {
+                placeholderIndex = (placeholderIndex + 1) % examples.length;
+                textEl.textContent = examples[placeholderIndex];
+                textEl.classList.remove('opacity-0');
+                textEl.classList.add('opacity-100');
+            }, 400);
+        }
+
+        function updateAnimatedPlaceholder() {
+            const input = document.getElementById('heroSearchInput');
+            const overlay = document.getElementById('animatedPlaceholder');
+            if (!input || !overlay) return;
+            overlay.classList.toggle('hidden', input.value.trim().length > 0);
+        }
+
+        // ===================================================
+        // SECTION: LANGUAGE / TRANSLATIONS
+        // ===================================================
+        const translations = {
+            en: {
+                igBanner: "Check out the official instagram page!",
+                igBannerBtn: "Click Here →",
+                igMobileLabel: "Instagram page",
+                igMobileBtn: "VISIT →",
+                navAbout: "About",
+                navLibrary: "Library",
+                mobileHome: "HOME",
+                mobileAbout: "ABOUT",
+                heroLine1: "Nerdifying the",
+                heroLine2: "automotive culture",
+                tagline: "one car at a time...",
+                searchPlaceholder: "Search for vehicle...",
+                searchExamples: [
+                    "Search for Nissans",
+                    "Search for German cars",
+                    "Search for a year of manufacture",
+                    "Search $1 million+",
+                    "Search for JDM legends",
+                    "Search for V8 engines",
+                    "Search for Italian supercars",
+                    "Search for hybrid hypercars",
+                    "Search for 0-60 under 3 seconds",
+                    "Search for American muscle"
+                ],
+                searchBtn: "Search",
+                navCompare: "Compare Bay",
+                compareTitle: "Compare Bay",
+                compareSubtitle: "Pick any two cars from the database and see how they stack up.",
+                comparePickA: "Choose the first car...",
+                comparePickB: "Choose the second car...",
+                comparePrompt: "Choose two cars above to compare them.",
+                compareSameCar: "Pick two different cars to compare.",
+                compareIsFaster: "has the higher top speed",
+                compareIsSlower: "is the slower of the two",
+                compareIsPricier: "carries the higher price tag",
+                compareIsCheaper: "is the more affordable option",
+                compareIsQuicker: "gets to 100 km/h quicker",
+                compareIsSluggish: "isn't as quick off the line",
+                noResults: 'No specs found matching "{q}". Try searching "S63", "V6", or "GT3".',
+                viewSpec: "View Spec →",
+                viewBrand: "View Brand →",
+                aboutTitlePrefix: "About",
+                aboutP1: "Spec.drive was created on April 13th, 2026, with a simple passion: sharing the incredible world of automobiles with people around the globe.",
+                aboutP2: "The journey started with our very first post, featuring the specifications of the legendary Nissan GT-R R35. What began as a small project from Sri Lanka quickly grew into a place where car enthusiasts could discover, learn, and appreciate the engineering behind some of the world's most amazing machines.",
+                aboutP3: "The goal of Spec.drive is to give both car enthusiasts and beginners a quick glimpse into how bizarre, innovative, and fascinating the automotive industry really is. Every car has something unique — whether it's a groundbreaking engine, a racing legacy, a crazy design, or a story behind its creation.",
+                aboutP4: "Our mission is to cover as many vehicles as possible and build a community for people who love exploring car specifications, performance, history, and automotive technology.",
+                aboutP5: "This is only the beginning. We have many more exciting things planned, so stay tuned...",
+                aboutP6: "More new things to come ;)",
+                aboutFounderLabel: "- Founder of spec.drive",
+                aboutVideoLabel: "Check out our first ever video! - The Nissan GT-R R35",
+                returnHome: "← Return to Home",
+                footerTagline: "Nerdifying the automotive culture",
+                footerContactLabel: "Contact",
+                libraryTitle: "Spec Library",
+                librarySubtitle: "Browse by brand. New models get added over time.",
+                backToLibrary: "← Back to Library",
+                comingSoonTitle: "No specs here yet",
+                comingSoonBody: "We haven't written this brand up yet — check back soon.",
+                statCountry: "Country",
+                statPrice: "Price",
+                statTopSpeed: "Top Speed",
+                statZeroHundred: "0-100 km/h"
+            },
+            de: {
+                igBanner: "Schau dir unsere offizielle Instagram-Seite an!",
+                igBannerBtn: "Hier klicken →",
+                igMobileLabel: "Instagram-Seite",
+                igMobileBtn: "BESUCHEN →",
+                navAbout: "Über uns",
+                navLibrary: "Bibliothek",
+                mobileHome: "STARTSEITE",
+                mobileAbout: "ÜBER UNS",
+                heroLine1: "Verwandeln die",
+                heroLine2: "Autokultur in Nerd-Wissen",
+                tagline: "ein Auto nach dem anderen...",
+                searchPlaceholder: "Nach Fahrzeug suchen...",
+                searchExamples: [
+                    "Suche nach Nissan",
+                    "Suche nach deutschen Autos",
+                    "Suche nach Baujahr",
+                    "Suche ab 1 Million $",
+                    "Suche nach JDM-Legenden",
+                    "Suche nach V8-Motoren",
+                    "Suche nach italienischen Supersportwagen",
+                    "Suche nach Hybrid-Hypercars",
+                    "Suche nach 0-100 unter 3 Sekunden",
+                    "Suche nach US-Muscle-Cars"
+                ],
+                searchBtn: "Suchen",
+                navCompare: "Vergleichsecke",
+                compareTitle: "Vergleichsecke",
+                compareSubtitle: "Wähle zwei Autos aus der Datenbank und vergleiche sie direkt.",
+                comparePickA: "Erstes Auto wählen...",
+                comparePickB: "Zweites Auto wählen...",
+                comparePrompt: "Wähle oben zwei Autos zum Vergleichen aus.",
+                compareSameCar: "Wähle zwei unterschiedliche Autos.",
+                compareIsFaster: "hat die höhere Höchstgeschwindigkeit",
+                compareIsSlower: "ist das langsamere der beiden",
+                compareIsPricier: "hat den höheren Preis",
+                compareIsCheaper: "ist die günstigere Option",
+                compareIsQuicker: "erreicht 100 km/h schneller",
+                compareIsSluggish: "beschleunigt nicht ganz so schnell",
+                noResults: 'Keine Ergebnisse für "{q}" gefunden. Versuche "S63", "V6" oder "GT3".',
+                viewSpec: "Details ansehen →",
+                viewBrand: "Marke ansehen →",
+                aboutTitlePrefix: "Über",
+                aboutP1: "Spec.drive wurde am 13. April 2026 aus einer einfachen Leidenschaft heraus gegründet: die faszinierende Welt der Automobile mit Menschen auf der ganzen Welt zu teilen.",
+                aboutP2: "Alles begann mit unserem allerersten Beitrag über die Spezifikationen des legendären Nissan GT-R R35. Was als kleines Projekt aus Sri Lanka startete, wurde schnell zu einem Ort, an dem Autoliebhaber die Technik hinter einigen der beeindruckendsten Maschinen der Welt entdecken und schätzen lernen konnten.",
+                aboutP3: "Das Ziel von Spec.drive ist es, sowohl Autoenthusiasten als auch Einsteigern einen schnellen Einblick zu geben, wie ungewöhnlich, innovativ und faszinierend die Automobilindustrie wirklich ist. Jedes Auto hat etwas Besonderes — sei es ein bahnbrechender Motor, ein Rennerbe, ein verrücktes Design oder eine Geschichte hinter seiner Entstehung.",
+                aboutP4: "Unsere Mission ist es, so viele Fahrzeuge wie möglich vorzustellen und eine Community für Menschen aufzubauen, die gerne Fahrzeugspezifikationen, Leistung, Geschichte und Automobiltechnik erkunden.",
+                aboutP5: "Das ist erst der Anfang. Es gibt noch viele spannende Dinge, die wir planen, also bleib dran...",
+                aboutP6: "Weitere Neuigkeiten folgen ;)",
+                aboutFounderLabel: "- Gründer von spec.drive",
+                aboutVideoLabel: "Schau dir unser allererstes Video an! - Der Nissan GT-R R35",
+                returnHome: "← Zurück zur Startseite",
+                footerTagline: "Wir verwandeln die Autokultur in Nerd-Wissen",
+                footerContactLabel: "Kontakt",
+                libraryTitle: "Spec-Bibliothek",
+                librarySubtitle: "Nach Marke durchsuchen. Neue Modelle kommen laufend dazu.",
+                backToLibrary: "← Zurück zur Bibliothek",
+                comingSoonTitle: "Noch keine Daten",
+                comingSoonBody: "Für diese Marke haben wir noch nichts geschrieben — schau bald wieder vorbei.",
+                statCountry: "Land",
+                statPrice: "Preis",
+                statTopSpeed: "Höchstgeschwindigkeit",
+                statZeroHundred: "0-100 km/h"
+            },
+            fr: {
+                igBanner: "Découvrez notre page Instagram officielle !",
+                igBannerBtn: "Cliquez ici →",
+                igMobileLabel: "Page Instagram",
+                igMobileBtn: "VISITER →",
+                navAbout: "À propos",
+                navLibrary: "Bibliothèque",
+                mobileHome: "ACCUEIL",
+                mobileAbout: "À PROPOS",
+                heroLine1: "Nerdifier la",
+                heroLine2: "culture automobile",
+                tagline: "une voiture à la fois...",
+                searchPlaceholder: "Rechercher un véhicule...",
+                searchExamples: [
+                    "Rechercher des Nissan",
+                    "Rechercher des voitures allemandes",
+                    "Rechercher par année de fabrication",
+                    "Rechercher à partir d'1 million $",
+                    "Rechercher des légendes JDM",
+                    "Rechercher des moteurs V8",
+                    "Rechercher des supercars italiennes",
+                    "Rechercher des hypercars hybrides",
+                    "Rechercher 0-100 en moins de 3 secondes",
+                    "Rechercher des muscle cars américaines"
+                ],
+                searchBtn: "Rechercher",
+                navCompare: "Espace Comparaison",
+                compareTitle: "Espace Comparaison",
+                compareSubtitle: "Choisissez deux voitures de la base de données et comparez-les.",
+                comparePickA: "Choisir la première voiture...",
+                comparePickB: "Choisir la deuxième voiture...",
+                comparePrompt: "Choisissez deux voitures ci-dessus pour les comparer.",
+                compareSameCar: "Choisissez deux voitures différentes.",
+                compareIsFaster: "a la vitesse de pointe la plus élevée",
+                compareIsSlower: "est la plus lente des deux",
+                compareIsPricier: "a le prix le plus élevé",
+                compareIsCheaper: "est l'option la plus abordable",
+                compareIsQuicker: "atteint 100 km/h plus vite",
+                compareIsSluggish: "accélère un peu moins vite",
+                noResults: 'Aucun résultat pour "{q}". Essayez "S63", "V6" ou "GT3".',
+                viewSpec: "Voir la fiche →",
+                viewBrand: "Voir la marque →",
+                aboutTitlePrefix: "À propos de",
+                aboutP1: "Spec.drive a été créé le 13 avril 2026, avec une passion simple : partager le monde incroyable de l'automobile avec des passionnés du monde entier.",
+                aboutP2: "Tout a commencé avec notre tout premier post, consacré aux caractéristiques de la légendaire Nissan GT-R R35. Ce qui n'était au départ qu'un petit projet lancé depuis le Sri Lanka est rapidement devenu un lieu où les passionnés d'automobile peuvent découvrir et apprécier l'ingénierie derrière certaines des machines les plus impressionnantes au monde.",
+                aboutP3: "L'objectif de Spec.drive est d'offrir aux passionnés comme aux débutants un aperçu de ce que l'industrie automobile a de plus surprenant, innovant et fascinant. Chaque voiture a quelque chose d'unique — un moteur révolutionnaire, un héritage de course, un design audacieux, ou une histoire derrière sa création.",
+                aboutP4: "Notre mission est de couvrir un maximum de véhicules et de créer une communauté pour les passionnés de caractéristiques automobiles, de performance, d'histoire et de technologie.",
+                aboutP5: "Ce n'est que le début. Nous avons encore beaucoup de projets passionnants en préparation, restez à l'écoute...",
+                aboutP6: "D'autres nouveautés à venir ;)",
+                aboutFounderLabel: "- Fondateur de spec.drive",
+                aboutVideoLabel: "Découvrez notre toute première vidéo ! - La Nissan GT-R R35",
+                returnHome: "← Retour à l'accueil",
+                footerTagline: "Rendre la culture automobile passionnante",
+                footerContactLabel: "Contact",
+                libraryTitle: "Bibliothèque des specs",
+                librarySubtitle: "Parcourez par marque. De nouveaux modèles sont ajoutés régulièrement.",
+                backToLibrary: "← Retour à la bibliothèque",
+                comingSoonTitle: "Rien ici pour l'instant",
+                comingSoonBody: "Cette marque n'a pas encore de fiche — revenez bientôt.",
+                statCountry: "Pays",
+                statPrice: "Prix",
+                statTopSpeed: "Vitesse max.",
+                statZeroHundred: "0-100 km/h"
+            }
+        };
+
+        const langFlags = { en: "gb", de: "de", fr: "fr" };
+        let currentLang = "en";
+
+        function setLanguage(lang) {
+            if (!translations[lang]) return;
+            currentLang = lang;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key] !== undefined) el.textContent = translations[lang][key];
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key] !== undefined) el.setAttribute('placeholder', translations[lang][key]);
+            });
+
+            document.getElementById('langFlagIcon').src = `https://flagcdn.com/w40/${langFlags[lang]}.png`;
+            document.getElementById('langMenu').classList.add('hidden');
+
+            const searchInput = document.getElementById('heroSearchInput');
+            if (searchInput.value.trim()) handleSearch(searchInput.value);
+
+            // Reset the animated placeholder to this language's first example
+            placeholderIndex = 0;
+            const placeholderTextEl = document.getElementById('animatedPlaceholderText');
+            if (placeholderTextEl) {
+                const examples = translations[lang].searchExamples || [];
+                placeholderTextEl.textContent = examples[0] || '';
+            }
+
+            // Re-render whichever dynamic page is open so its i18n strings update too
+            const activeCarId = document.getElementById('page-car').dataset.activeId;
+            const activeBrand = document.getElementById('page-brand').dataset.activeBrand;
+            if (!document.getElementById('page-car').classList.contains('hidden') && activeCarId) renderCarPage(activeCarId);
+            if (!document.getElementById('page-brand').classList.contains('hidden') && activeBrand) renderBrandPage(activeBrand);
+            if (!document.getElementById('page-compare').classList.contains('hidden')) { populateCompareSelects(); renderComparePage(); }
+        }
+
+        function toggleLangMenu() {
+            document.getElementById('langMenu').classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', function (e) {
+            const wrap = document.getElementById('langSwitcherWrap');
+            if (wrap && !wrap.contains(e.target)) {
+                document.getElementById('langMenu').classList.add('hidden');
+            }
+        });
+
+        // ===================================================
+        // SECTION: VIEW SWITCHING
+        // Handles all 5 pages: home, about, library, brand, car
+        // ===================================================
+        const allPageIds = ['page-home', 'page-about', 'page-library', 'page-brand', 'page-car', 'page-compare'];
+
+        function showView(view, param) {
+            allPageIds.forEach(id => document.getElementById(id).classList.add('hidden'));
+
+            document.getElementById('nav-about-btn').classList.remove('text-r2');
+            document.getElementById('nav-library-btn').classList.remove('text-r2');
+
+            if (view === 'about') {
+                document.getElementById('page-about').classList.remove('hidden');
+                document.getElementById('nav-about-btn').classList.add('text-r2');
+            } else if (view === 'library') {
+                document.getElementById('page-library').classList.remove('hidden');
+                document.getElementById('nav-library-btn').classList.add('text-r2');
+            } else if (view === 'brand') {
+                document.getElementById('page-brand').classList.remove('hidden');
+                document.getElementById('nav-library-btn').classList.add('text-r2');
+                renderBrandPage(param);
+            } else if (view === 'car') {
+                document.getElementById('page-car').classList.remove('hidden');
+                document.getElementById('nav-library-btn').classList.add('text-r2');
+                renderCarPage(param);
+            } else if (view === 'compare') {
+                document.getElementById('page-compare').classList.remove('hidden');
+                populateCompareSelects();
+                renderComparePage();
+            } else {
+                document.getElementById('page-home').classList.remove('hidden');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Kept for the search results popup / flag row, which call these directly
+        function goToCar(id) { document.getElementById('searchResultsCard').classList.add('hidden'); showView('car', id); }
+        function goToBrand(brand) { document.getElementById('searchResultsCard').classList.add('hidden'); showView('brand', brand); }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        // ===================================================
+        // SECTION: LIBRARY PAGE RENDERING (NEW)
+        // ===================================================
+        function renderLibrary() {
+            const grid = document.getElementById('brandGrid');
+            grid.innerHTML = brands.map(brand => {
+                const count = cars.filter(c => c.brand === brand).length;
+                return `
+                <div onclick="goToBrand('${brand.replace(/'/g, "\\'")}')"
+                     class="cursor-pointer bg-c2 border border-[#1F1F1F] hover:border-r1 rounded-xl p-5 flex flex-col items-center justify-center gap-2 text-center transition-all">
+                    <span class="font-heading font-bold text-lg text-white uppercase tracking-wide">${brand}</span>
+                    <span class="text-xs text-gray-500">${count} ${count === 1 ? 'model' : 'models'}</span>
+                </div>`;
+            }).join('');
+        }
+
+        // ===================================================
+        // SECTION: BRAND PAGE RENDERING (NEW)
+        // ===================================================
+        function renderBrandPage(brand) {
+            document.getElementById('page-brand').dataset.activeBrand = brand;
+            const brandCars = cars.filter(c => c.brand === brand);
+            const container = document.getElementById('brandPageContent');
+            const t = translations[currentLang];
+
+            let cardsHtml;
+            if (brandCars.length === 0) {
+                cardsHtml = `
+                <div class="bg-c2 border border-[#1F1F1F] rounded-2xl p-10 text-center">
+                    <p class="font-heading font-bold text-xl text-white uppercase mb-2">${t.comingSoonTitle}</p>
+                    <p class="text-gray-400">${t.comingSoonBody}</p>
+                </div>`;
+            } else {
+                cardsHtml = `<div class="grid sm:grid-cols-2 gap-4">` + brandCars.map(car => `
+                    <div onclick="goToCar('${car.id}')" class="cursor-pointer bg-c2 border border-[#1F1F1F] hover:border-r1 rounded-xl overflow-hidden transition-all">
+                        <img src="${car.image}" alt="${car.brand} ${car.name}" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <div class="font-heading font-bold text-lg text-white">${car.brand} ${car.name}</div>
+                            <div class="text-gray-400 text-xs mt-1">${car.year} • ${car.price}</div>
+                        </div>
+                    </div>`).join('') + `</div>`;
+            }
+
+            container.innerHTML = `
+                <h2 class="font-heading font-bold text-3xl md:text-5xl text-white uppercase tracking-wide mb-6">${brand}</h2>
+                ${cardsHtml}`;
+        }
+
+        // ===================================================
+        // SECTION: CAR DETAIL PAGE RENDERING (NEW)
+        // Big stat cards (country / price / top speed / 0-100) + description
+        // ===================================================
+        function renderCarPage(id) {
+            const car = cars.find(c => c.id === id);
+            document.getElementById('page-car').dataset.activeId = id;
+            const container = document.getElementById('carPageContent');
+            const t = translations[currentLang];
+
+            if (!car) {
+                container.innerHTML = `<p class="text-gray-400">Car not found.</p>`;
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="bg-c2 border border-[#1F1F1F] rounded-2xl overflow-hidden shadow-2xl">
+                    <img src="${car.image}" alt="${car.brand} ${car.name}" class="w-full h-56 md:h-80 object-cover">
+
+                    <div class="p-6 md:p-10 space-y-8">
+                        <div>
+                            <div class="text-r2 font-heading uppercase tracking-widest text-sm">${car.brand}</div>
+                            <h2 class="font-heading font-bold text-3xl md:text-5xl text-white uppercase">${car.name} <span class="text-gray-500 text-2xl md:text-3xl">'${car.year}</span></h2>
+                        </div>
+
+                        <!-- Big stat row -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="bg-c1 border border-[#222222] rounded-xl p-4 text-center">
+                                <img src="https://flagcdn.com/w80/${car.countryFlag}.png" alt="${car.country}" class="w-10 h-7 object-cover rounded mx-auto mb-2 border border-[#2a2a2a]">
+                                <div class="text-[11px] text-gray-500 uppercase tracking-wide">${t.statCountry}</div>
+                                <div class="font-heading font-bold text-white text-sm md:text-base">${car.country}</div>
+                            </div>
+                            <div class="bg-c1 border border-[#222222] rounded-xl p-4 text-center flex flex-col justify-center">
+                                <div class="text-[11px] text-gray-500 uppercase tracking-wide">${t.statPrice}</div>
+                                <div class="font-heading font-bold text-r3 text-lg md:text-xl">${car.price}</div>
+                            </div>
+                            <div class="bg-c1 border border-[#222222] rounded-xl p-4 text-center flex flex-col justify-center">
+                                <div class="text-[11px] text-gray-500 uppercase tracking-wide">${t.statTopSpeed}</div>
+                                <div class="font-heading font-bold text-white text-base md:text-lg">${car.topSpeed}</div>
+                            </div>
+                            <div class="bg-c1 border border-[#222222] rounded-xl p-4 text-center flex flex-col justify-center">
+                                <div class="text-[11px] text-gray-500 uppercase tracking-wide">${t.statZeroHundred}</div>
+                                <div class="font-heading font-bold text-white text-base md:text-lg">${car.zeroToHundred}</div>
+                            </div>
+                        </div>
+
+                        <!-- Summary + spec list -->
+                        <div class="space-y-4">
+                            <p class="text-gray-200 font-body text-base md:text-lg leading-relaxed">${car.summary}</p>
+                            <div class="divide-y divide-[#1F1F1F] border-t border-b border-[#1F1F1F]">
+                                ${car.specs.map(spec => `
+                                    <div class="py-3 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                                        <span class="font-heading font-bold text-r2 uppercase text-sm shrink-0 sm:w-56">${spec.label}</span>
+                                        <span class="text-gray-300 font-body text-sm md:text-base">${spec.value}</span>
+                                    </div>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        // ===================================================
+        // SECTION: SEARCH
+        // Now searches cars.json (by brand/model/engine) and
+        // brands.json (by brand name) and links straight to the
+        // matching detail page.
+        // ===================================================
+        function filterByCountry(country) {
+            const searchInput = document.getElementById('heroSearchInput');
+            searchInput.value = country;
+            handleSearch(country);
+        }
+
+        function handleSearch(query) {
+            const resultsCard = document.getElementById('searchResultsCard');
+            const q = query.toLowerCase().trim();
+
+            if (!q) {
+                resultsCard.classList.add('hidden');
+                return;
+            }
+
+            const carMatches = cars.filter(car =>
+                car.brand.toLowerCase().includes(q) ||
+                car.name.toLowerCase().includes(q) ||
+                car.country.toLowerCase().includes(q) ||
+                (car.specs || []).some(s => s.value.toLowerCase().includes(q))
+            );
+            const brandMatches = brands.filter(b =>
+                b.toLowerCase().includes(q) && !carMatches.some(c => c.brand === b)
+            );
+
+            resultsCard.classList.remove('hidden');
+            const t = translations[currentLang];
+
+            if (carMatches.length === 0 && brandMatches.length === 0) {
+                resultsCard.innerHTML = `<div class="text-gray-400 p-2">${t.noResults.replace('{q}', query)}</div>`;
+                return;
+            }
+
+            const carHtml = carMatches.map(car => `
+                <div onclick="goToCar('${car.id}')" class="p-3 bg-c1 rounded-lg border border-[#1f1f1f] flex justify-between items-center hover:border-r1 transition-colors cursor-pointer">
+                    <div>
+                        <div class="font-heading font-bold text-white text-base">${car.brand} ${car.name}</div>
+                        <div class="text-gray-400 text-xs">${car.year} • ${car.country}</div>
+                    </div>
+                    <span class="text-r2 font-heading text-xs uppercase">${t.viewSpec}</span>
+                </div>`).join('');
+
+            const brandHtml = brandMatches.map(brand => `
+                <div onclick="goToBrand('${brand.replace(/'/g, "\\'")}')" class="p-3 bg-c1 rounded-lg border border-[#1f1f1f] flex justify-between items-center hover:border-r1 transition-colors cursor-pointer">
+                    <div class="font-heading font-bold text-white text-base">${brand}</div>
+                    <span class="text-r2 font-heading text-xs uppercase">${t.viewBrand}</span>
+                </div>`).join('');
+
+            resultsCard.innerHTML = carHtml + brandHtml;
+        }
+
+        function performSearch() {
+            const val = document.getElementById('heroSearchInput').value;
+            const q = val.toLowerCase().trim();
+
+            // Typing something like "compare" and hitting search/Enter jumps to the Compare Bay
+            if (q.includes('compare')) {
+                document.getElementById('searchResultsCard').classList.add('hidden');
+                showView('compare');
+                return;
+            }
+            handleSearch(val);
+        }
+
+        // ===================================================
+        // SECTION: COMPARE BAY (NEW)
+        // Lets the user pick any two cars from the database and
+        // see top speed / price / 0-100 side by side.
+        // ===================================================
+        function populateCompareSelects() {
+            const selA = document.getElementById('compareSelectA');
+            const selB = document.getElementById('compareSelectB');
+            if (!selA || !selB) return;
+
+            const t = translations[currentLang];
+            const prevA = selA.value;
+            const prevB = selB.value;
+
+            const optionsHtml = cars.map(c =>
+                `<option value="${c.id}">${c.brand} ${c.name} (${c.year})</option>`
+            ).join('');
+
+            selA.innerHTML = `<option value="">${t.comparePickA}</option>${optionsHtml}`;
+            selB.innerHTML = `<option value="">${t.comparePickB}</option>${optionsHtml}`;
+
+            if (cars.some(c => c.id === prevA)) selA.value = prevA;
+            if (cars.some(c => c.id === prevB)) selB.value = prevB;
+        }
+
+        // Pulls the first number out of strings like "$204,000", "330 km/h", "2.7s"
+        function extractNumber(str) {
+            if (!str) return null;
+            const match = String(str).replace(/,/g, '').match(/[\d.]+/);
+            return match ? parseFloat(match[0]) : null;
+        }
+
+        function renderComparePage() {
+            const idA = document.getElementById('compareSelectA')?.value;
+            const idB = document.getElementById('compareSelectB')?.value;
+            const resultEl = document.getElementById('compareResult');
+            if (!resultEl) return;
+            const t = translations[currentLang];
+
+            if (!idA || !idB) {
+                resultEl.innerHTML = `<div class="text-gray-400 font-body p-6 bg-c2 border border-[#1F1F1F] rounded-2xl text-center">${t.comparePrompt}</div>`;
+                return;
+            }
+            if (idA === idB) {
+                resultEl.innerHTML = `<div class="text-gray-400 font-body p-6 bg-c2 border border-[#1F1F1F] rounded-2xl text-center">${t.compareSameCar}</div>`;
+                return;
+            }
+
+            const carA = cars.find(c => c.id === idA);
+            const carB = cars.find(c => c.id === idB);
+            if (!carA || !carB) return;
+
+            const priceA = extractNumber(carA.price);
+            const priceB = extractNumber(carB.price);
+            const speedA = extractNumber(carA.topSpeed);
+            const speedB = extractNumber(carB.topSpeed);
+            const zeroA = extractNumber(carA.zeroToHundred);
+            const zeroB = extractNumber(carB.zeroToHundred);
+
+            const pricier = (priceA != null && priceB != null && priceA !== priceB) ? (priceA > priceB ? carA : carB) : null;
+            const cheaper = pricier ? (pricier === carA ? carB : carA) : null;
+            const faster = (speedA != null && speedB != null && speedA !== speedB) ? (speedA > speedB ? carA : carB) : null;
+            const slower = faster ? (faster === carA ? carB : carA) : null;
+            const quicker = (zeroA != null && zeroB != null && zeroA !== zeroB) ? (zeroA < zeroB ? carA : carB) : null;
+            const sluggish = quicker ? (quicker === carA ? carB : carA) : null;
+
+            function carCard(car) {
+                const summary = car.summary || '';
+                const trimmed = summary.length > 160 ? summary.slice(0, 160) + '…' : summary;
+                return `
+                <div class="bg-c2 border border-[#1F1F1F] rounded-2xl overflow-hidden">
+                    <img src="${car.image}" alt="${car.brand} ${car.name}" class="w-full h-40 object-cover">
+                    <div class="p-5 space-y-3">
+                        <div>
+                            <div class="text-r2 font-heading uppercase tracking-widest text-xs">${car.brand}</div>
+                            <div class="font-heading font-bold text-xl text-white uppercase">${car.name} <span class="text-gray-500 text-base">'${car.year}</span></div>
+                        </div>
+                        <p class="text-gray-300 text-sm font-body leading-relaxed">${trimmed}</p>
+                    </div>
+                </div>`;
+            }
+
+            function statRow(label, valA, valB, winnerCar) {
+                return `
+                <div class="grid grid-cols-3 items-center py-3 border-b border-[#1F1F1F] last:border-0">
+                    <div class="text-sm md:text-base font-body ${winnerCar === carA ? 'text-r3 font-bold' : 'text-gray-300'}">${valA ?? '—'}</div>
+                    <div class="text-center text-[11px] md:text-xs text-gray-500 uppercase tracking-wide font-heading">${label}</div>
+                    <div class="text-sm md:text-base font-body text-right ${winnerCar === carB ? 'text-r3 font-bold' : 'text-gray-300'}">${valB ?? '—'}</div>
+                </div>`;
+            }
+
+            const takeaways = [];
+            if (faster && slower) takeaways.push(`🏁 <span class="text-white font-semibold">${faster.brand} ${faster.name}</span> ${t.compareIsFaster} — <span class="text-gray-400">${slower.brand} ${slower.name} ${t.compareIsSlower}</span>.`);
+            if (pricier && cheaper) takeaways.push(`💰 <span class="text-white font-semibold">${pricier.brand} ${pricier.name}</span> ${t.compareIsPricier} — <span class="text-gray-400">${cheaper.brand} ${cheaper.name} ${t.compareIsCheaper}</span>.`);
+            if (quicker && sluggish) takeaways.push(`⚡ <span class="text-white font-semibold">${quicker.brand} ${quicker.name}</span> ${t.compareIsQuicker} — <span class="text-gray-400">${sluggish.brand} ${sluggish.name} ${t.compareIsSluggish}</span>.`);
+
+            resultEl.innerHTML = `
+                <div class="grid sm:grid-cols-2 gap-4 mb-6">
+                    ${carCard(carA)}
+                    ${carCard(carB)}
+                </div>
+                <div class="bg-c1 border border-[#222222] rounded-2xl p-5 md:p-6">
+                    ${statRow(t.statPrice, carA.price, carB.price, pricier)}
+                    ${statRow(t.statTopSpeed, carA.topSpeed, carB.topSpeed, faster)}
+                    ${statRow(t.statZeroHundred, carA.zeroToHundred, carB.zeroToHundred, quicker)}
+                </div>
+                <div class="mt-6 space-y-2 font-body text-sm md:text-base text-gray-300">
+                    ${takeaways.map(line => `<p>${line}</p>`).join('')}
+                </div>`;
+        }
+
+        // Kick everything off
+        loadDatabase();
+        startPlaceholderRotation();
+    </script>
+</body>
+</html>
