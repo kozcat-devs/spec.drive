@@ -1,0 +1,62 @@
+[
+  {
+    "id": "nissan-gtr-r35",
+    "brand": "Nissan",
+    "name": "GT-R R35",
+    "year": "2025",
+    "country": "Japan",
+    "countryFlag": "jp",
+    "price": "$130,000 - $230,000",
+    "topSpeed": "196 - 205 mph (315 - 330 km/h)",
+    "zeroToHundred": "2.5s - 2.9s (0-60 mph)",
+    "image": "assets/cars/nissan-gtr-r35.png",
+    "summary": "The 2025 Nissan GT-R R35 marks the final, highly refined iteration of the legendary platform, likely concluding with special T-spec and NISMO editions.",
+    "specs": [
+      { "label": "Engine", "value": "Hand-built 3.8-liter twin-turbo V6 (VR38DETT)" },
+      { "label": "Performance", "value": "Premium Edition: 565 horsepower and 467 lb-ft of torque. NISMO/T-spec: 600 horsepower and 481 lb-ft of torque." },
+      { "label": "Drivetrain", "value": "ATTESA E-TS all-wheel-drive system with a 6-speed dual-clutch rear transaxle." },
+      { "label": "2025 Changes (JDM/T-spec)", "value": "Introduction of new T-spec and Track Edition models with special NISMO-tuned suspension, carbon ceramic brakes, and enhanced, lighter engine components (piston rings, connecting rods)." },
+      { "label": "Exterior", "value": "Updated aerodynamics, featuring a revised front bumper, grille, and a new, larger rear wing for the Nismo/T-spec variants." },
+      { "label": "Interior", "value": "Combination of Alcantara and leather, with special Blue Heaven interior color options for T-spec models." }
+    ]
+  },
+  {
+    "id": "koenigsegg-ccgt",
+    "brand": "Koenigsegg",
+    "name": "CCGT",
+    "year": "2007",
+    "country": "Sweden",
+    "countryFlag": "se",
+    "price": "$4,400,000",
+    "topSpeed": "344 km/h",
+    "zeroToHundred": "3.0s (0-100 km/h)",
+    "image": "assets/cars/koenigsegg-ccgt.jpg",
+    "summary": "The Koenigsegg CCGT was never meant to sit under showroom lights. Built as Koenigsegg's ambitious entry into GT1 racing and Le Mans, it was engineered to challenge the world's greatest race cars — before a sudden FIA regulation change ended its racing career before it ever competed. Only one prototype survives today, making it one of the rarest and most forgotten Koenigseggs ever created.",
+    "specs": [
+      { "label": "Engine", "value": "Naturally aspirated 5.0-litre V8 producing 600 horsepower — the maximum allowed under GT1 regulations." },
+      { "label": "Drivetrain", "value": "Rear-wheel drive via a 6-speed sequential magnesium transaxle gearbox, with straight-cut gears and dog-ring engagement." },
+      { "label": "Chassis & Aero", "value": "Carbon fibre semi-monocoque chassis weighing under 1,000 kg before mandatory ballast, generating over 600 kg of downforce. Race-spec pushrod suspension, carbon-ceramic brakes, centre-lock magnesium wheels." },
+      { "label": "Legacy", "value": "A one-of-one racing prototype born from Christian von Koenigsegg's dream of conquering Le Mans, remembered not for races won, but for what could have been." }
+    ]
+  },
+  {
+    "id": "mazda-furai",
+    "brand": "Mazda",
+    "name": "Furai",
+    "year": "2008",
+    "country": "Japan",
+    "countryFlag": "jp",
+    "price": "Unobtainable (the only one built was destroyed)",
+    "topSpeed": "290 km/h",
+    "zeroToHundred": "3.0s (0-100 km/h)",
+    "image": "assets/cars/mazda-furai.jpg",
+    "summary": "Unveiled in 2008, the Mazda Furai — Japanese for 'Sound of the Wind' — is one of the greatest automotive masterpieces that never made it to production, a machine sculpted almost entirely by aerodynamics. Developed with real track performance in mind, it blurred the line between race car and road-going fantasy with its screaming rotary soundtrack and futuristic bodywork.",
+    "specs": [
+      { "label": "Chassis", "value": "Built upon a Courage C65 Le Mans Prototype chassis." },
+      { "label": "Engine", "value": "Naturally aspirated 20B three-rotor rotary engine producing around 450 horsepower, designed to run on ethanol fuel." },
+      { "label": "Weight", "value": "Just 675 kg." },
+      { "label": "Drivetrain", "value": "Rear-wheel drive via a 6-speed sequential gearbox." },
+      { "label": "Fate", "value": "The one and only Furai was destroyed in a fire during a media test in 2008, leaving the world wondering what could have been." }
+    ]
+  }
+]
