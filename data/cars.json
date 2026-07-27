@@ -58,5 +58,45 @@
       { "label": "Drivetrain", "value": "Rear-wheel drive via a 6-speed sequential gearbox." },
       { "label": "Fate", "value": "The one and only Furai was destroyed in a fire during a media test in 2008, leaving the world wondering what could have been." }
     ]
+  },
+  {
+    "id": "bugatti-chiron-super-sport",
+    "brand": "Bugatti",
+    "name": "Chiron Super Sport",
+    "year": "2022",
+    "country": "France",
+    "countryFlag": "fr",
+    "price": "$3,800,000 - $3,900,000",
+    "topSpeed": "440 km/h (electronically limited)",
+    "zeroToHundred": "2.4s (0-100 km/h)",
+    "image": "assets/cars/bugatti-chiron-super-sport.jpg",
+    "summary": "The Bugatti Chiron Super Sport represents the absolute peak of automotive engineering, a machine designed without compromise to push the boundaries of speed, luxury, and performance. Every curve of its elongated, aerodynamic 'longtail' body has been sculpted to optimize airflow and reduce drag, while carbon fibre construction keeps it both light and rigid.",
+    "specs": [
+      { "label": "Engine", "value": "8.0-litre quad-turbocharged W16 producing 1,600 PS (1,578 hp) — a masterpiece of engineering that pulls relentlessly, even at extreme speed." },
+      { "label": "Transmission", "value": "7-speed dual-clutch, shifting from 6th to 7th gear at 420 km/h under full load." },
+      { "label": "Design", "value": "A 'longtail' rear extends the body to hold laminar airflow longer, cutting aerodynamic stall by over 40%, while distinguishing it visually from the standard Chiron." },
+      { "label": "Top Speed Note", "value": "The standard production Super Sport is electronically limited to 440 km/h. Its limited-edition sibling, the 30-unit Chiron Super Sport 300+, had its limiter removed and set a record 490.484 km/h (304.773 mph) run in 2019 — the figure often quoted for this model." }
+    ]
+  },
+  {
+    "id": "bugatti-bolide",
+    "brand": "Bugatti",
+    "name": "Bolide",
+    "year": "2024",
+    "country": "France",
+    "countryFlag": "fr",
+    "price": "~$4,700,000 (production run of 40 units)",
+    "topSpeed": "500+ km/h (theoretical, per Bugatti simulation)",
+    "zeroToHundred": "2.2s (0-100 km/h)",
+    "image": "assets/cars/bugatti-bolide.jpg",
+    "summary": "The Bugatti Bolide is one of the most extreme track-focused machines ever created — a lightweight, uncompromising expression of Bugatti performance. Built around an ultra-rigid carbon fibre monocoque and developed with motorsport-grade aerodynamics, it strips away every road-car luxury in pursuit of raw speed, downforce, and lap-time capability.",
+    "specs": [
+      { "label": "Engine", "value": "8.0-litre quad-turbocharged W16 producing 1,578 hp (1,600 PS) on standard pump fuel, or up to 1,825 hp (1,850 PS) on 110-octane racing fuel." },
+      { "label": "Drivetrain", "value": "7-speed dual-clutch transmission driving all four wheels through an advanced all-wheel-drive system." },
+      { "label": "Weight", "value": "1,240 kg dry — or 1,450 kg in FIA-compliant race trim — giving a power-to-weight ratio around 0.67-0.85 kg/hp, in Formula 1 territory." },
+      { "label": "Aerodynamics", "value": "Roughly 1,800 kg of downforce at 320 km/h thanks to an enormous rear wing, front splitter, underbody venturi tunnels, and an aggressive diffuser. Even the roof scoop uses an adaptive, morphable surface inspired by motorsport aero." },
+      { "label": "Chassis & Brakes", "value": "Race-style pushrod suspension, forged magnesium wheels with centre-lock hubs, and carbon-carbon racing brakes built for repeated high-speed track abuse." },
+      { "label": "Cockpit", "value": "A stripped, purposeful race interior: fixed-seat layout, six-point harnesses, FIA-style safety systems, a quick-release steering wheel, and digital race instrumentation. Non-road-legal, on full racing slicks." }
+    ]
   }
 ]
