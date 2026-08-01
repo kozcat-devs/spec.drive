@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RXZ4TZF6L9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-RXZ4TZF6L9');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>specdrive | Nerdifying the automotive culture</title>
@@ -431,7 +422,7 @@
                 spec<span class="text-r2">drive</span>
             </div>
             <div>
-                © 2026 specdrive (^._.^)ﾉ • <span data-i18n="footerTagline">Nerdifying the automotive culture</span>
+                © 2026 specdrive • <span data-i18n="footerTagline">Nerdifying the automotive culture</span>
             </div>
             <div class="flex gap-4 text-gray-400">
                 <a href="https://www.instagram.com/spec.drive/" target="_blank" class="hover:text-r2"><i class="fa-brands fa-instagram"></i></a>
@@ -515,7 +506,8 @@
                 statZeroHundred: "0-100 km/h",
                 statPeopleReached: "People Reached",
                 statVehicles: "Vehicles",
-                statPlatform: "Automotive Specifications Platform"
+                statPlatform: "Automotive Specifications Platform",
+                watchOnInstagram: "Watch on Instagram"
             },
             de: {
                 igBanner: "Schau dir unsere offizielle Instagram-Seite an!",
@@ -557,7 +549,8 @@
                 statZeroHundred: "0-100 km/h",
                 statPeopleReached: "Erreichte Personen",
                 statVehicles: "Fahrzeuge",
-                statPlatform: "Automotive Spezifikations-Plattform"
+                statPlatform: "Automotive Spezifikations-Plattform",
+                watchOnInstagram: "Auf Instagram ansehen"
             },
             fr: {
                 igBanner: "Découvrez notre page Instagram officielle !",
@@ -599,7 +592,8 @@
                 statZeroHundred: "0-100 km/h",
                 statPeopleReached: "Personnes touchées",
                 statVehicles: "Véhicules",
-                statPlatform: "Plateforme de fiches techniques automobiles"
+                statPlatform: "Plateforme de fiches techniques automobiles",
+                watchOnInstagram: "Voir sur Instagram"
             }
         };
 
@@ -780,6 +774,15 @@
                         <!-- Summary + spec list -->
                         <div class="space-y-4">
                             <p class="text-gray-200 font-body text-base md:text-lg leading-relaxed">${car.summary}</p>
+
+                            ${car.instagram ? `
+                            <a href="${car.instagram}" target="_blank" rel="noopener noreferrer"
+                               class="flex items-center gap-3 bg-c1 border border-r1/50 hover:border-r1 rounded-xl p-4 transition-all">
+                                <i class="fa-brands fa-instagram text-r3 text-xl"></i>
+                                <span class="font-heading font-bold text-white uppercase tracking-wide text-sm md:text-base">${t.watchOnInstagram}</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-gray-500 text-xs ml-auto"></i>
+                            </a>` : ''}
+
                             <div class="divide-y divide-[#1F1F1F] border-t border-b border-[#1F1F1F]">
                                 ${car.specs.map(spec => `
                                     <div class="py-3 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
