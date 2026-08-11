@@ -181,7 +181,6 @@
       { "label": "Construction", "value": "Advanced carbon fibre monocoque chassis (a first for the team, replacing the C9's aluminium construction), a massive rear wing, and the unmistakable silver 'Silver Arrow' livery." }
     ]
   }
-]
 {
   "id": "pagani-huayra-r",
   "brand": "Pagani",
@@ -192,6 +191,7 @@
   "acceleration": "2.8 - 2.9s (0-100 km/h)",
   "description": "The Pagani Huayra R is not just a hypercar—it's a track-focused masterpiece built with zero compromise. Powered by a naturally aspirated 6.0L V12 developed by HWA AG, this machine screams all the way to 9,000 rpm, delivering pure, raw emotion that modern turbo cars simply can't match. With over 850 horsepower and a weight of just around 1,050 kg, the Huayra R achieves an insane power-to-weight ratio, making it one of the most extreme track cars ever created. Every surface is engineered for maximum downforce, pushing it beyond even GT3 race cars in aerodynamic efficiency. This isn't built for the streets. No regulations. No limits. Just engineering freedom. The sound, the speed, the precision—this is Pagani unleashed.",
   "reelLink": "https://www.instagram.com/p/DXebSwRj27r/"
+  ]
 },
 {
   "id": "koenigsegg-sadairs-spear",
@@ -202,4 +202,6 @@
   "topSpeed": "360 km/h",
   "acceleration": "2.6s (0-100 km/h)",
   "description": "The Koenigsegg Sadair's Spear is not just a hypercar—it's a track-focused evolution of the legendary Jesko, built with extreme precision and zero compromise. Created as a tribute to Christian von Koenigsegg's father, this machine represents the ultimate expression of lightweight engineering, aerodynamic performance, and raw speed. Powered by a 5.0L twin-turbocharged V8 engine, the Sadair's Spear produces up to 1,625 horsepower and 1,500 Nm of torque when running on E85 fuel. Combined with Koenigsegg's revolutionary 9-speed Light Speed Transmission (LST) and a weight of approximately 1,320 kg, it delivers an incredible power-to-weight ratio designed for maximum acceleration and track performance. Every part of the Sadair's Spear has been optimized for speed. Featuring advanced carbon fibre construction, a redesigned aerodynamic package, increased downforce, upgraded suspension, carbon ceramic brakes, and track-focused Michelin Pilot Sport Cup 2 R tyres, it pushes the limits of what a road-based hypercar can achieve. This isn't just a faster Jesko. It's Koenigsegg's vision of pure performance unleashed. The power, the engineering, the precision—this is Swedish hypercar perfection."
+  ]
 }
+]
