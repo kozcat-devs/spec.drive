@@ -225,17 +225,30 @@
 
     <main class="flex-grow relative">
 
-        <!-- ======================================================= -->
-        <!-- SECTION: PAGE 1 - HOMEPAGE                               -->
-        <!-- ======================================================= -->
-        <div id="page-home" class="hero-bg min-h-[calc(100vh-80px)] flex flex-col items-center justify-center px-4 py-12 text-center">
-             <video class="hero-video" autoplay muted loop playsinline>
-    <source src="bgcar.mp4" type="video/mp4">
-</video>
+        <!-- ======================================================= -->        
+<!-- SECTION: PAGE 1 - HOMEPAGE                               -->
+<!-- ======================================================= -->
+<div id="page-home" class="relative min-h-[calc(100vh-80px)] flex flex-col items-center justify-center px-4 py-12 text-center overflow-hidden">
 
-<div class="hero-overlay"></div>
+    <!-- ==== NEW: BACKGROUND VIDEO ==== -->
+    <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+        <source src="bgcar.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
-            <div class="max-w-4xl mx-auto space-y-6 w-full flex flex-col items-center">
+    <!-- ==== NEW: GRADIENT OVERLAY ==== -->
+    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#0A0A0A]/80 to-[#0A0A0A]/95 z-10 pointer-events-none"></div>
+
+    <!-- Ensure content sits above the video using relative & z-20 -->
+    <div class="relative z-20 max-w-4xl mx-auto space-y-6 w-full flex flex-col items-center">
+
+        <!-- ---- SUBSECTION: HERO HEADING ---- -->
+        <h1 class="font-heading font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white uppercase leading-tight max-w-3xl">
+            <span data-i18n="heroLine1">Nerdifying the</span> <br>
+            <span class="text-r2" data-i18n="heroLine2">automotive culture</span>
+        </h1>
+        
+        <!-- [Keep all your other inner content here: Tagline, Search Bar, Flags, etc.] -->
 
                 <!-- ---- SUBSECTION: HERO HEADING ---- -->
                 <h1 class="font-heading font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white uppercase leading-tight max-w-3xl">
