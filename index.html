@@ -66,8 +66,30 @@
 
         /* Hero Background with dark GT-R overlay */
         .hero-bg {
-            background: linear-gradient(180deg, rgba(10, 10, 10, 0.82) 0%, rgba(10, 10, 10, 0.95) 100%),
-                        url('bgcar.jpg') center/cover no-repeat;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(10, 10, 10, 0.72) 0%,
+        rgba(10, 10, 10, 0.90) 100%
+    );
+    z-index: -1;
+}
         }
 
         /* Clean borders without neon or glowing effects */
@@ -207,6 +229,11 @@
         <!-- SECTION: PAGE 1 - HOMEPAGE                               -->
         <!-- ======================================================= -->
         <div id="page-home" class="hero-bg min-h-[calc(100vh-80px)] flex flex-col items-center justify-center px-4 py-12 text-center">
+             <video class="hero-video" autoplay muted loop playsinline>
+    <source src="bgcar.mp4" type="video/mp4">
+</video>
+
+<div class="hero-overlay"></div>
 
             <div class="max-w-4xl mx-auto space-y-6 w-full flex flex-col items-center">
 
