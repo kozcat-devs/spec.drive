@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXZ4TZF6L9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RXZ4TZF6L9');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>specdrive | Nerdifying the automotive culture</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script>
+        tailwind.config = {
+            theme: { extend: {
+                colors: { c1: '#0A0A0A', c2: '#121212', r1: '#C1121F', r2: '#D90429', r3: '#EF233C' },
+                fontFamily: { logo: ['Bebas Neue','sans-serif'], heading: ['Oswald','sans-serif'], body: ['Inter','sans-serif'] }
+            } }
+        }
+    </script>
+</head>
+<body data-root="" class="bg-c1 text-white min-h-screen flex flex-col justify-between font-body selection:bg-r2 selection:text-white">
+
+    <header id="sd-header" class="w-full bg-c2/90 border-b border-[#1A1A1A] sticky top-0 z-50"></header>
+
+    <main class="flex-grow relative page-fade-in">
+
+        <!-- ======================= HERO ======================= -->
+        <div class="relative min-h-[calc(100vh-80px)] flex flex-col items-center justify-center px-4 py-12 text-center overflow-hidden">
+
+            <div class="hero-photo-wrap">
+                <img src="assets/img/hero-gtr.jpg" alt="Liberty Walk Nissan GT-R" class="hero-photo">
+            </div>
+            <div class="hero-overlay"></div>
+
+            <div class="relative z-20 max-w-4xl mx-auto space-y-6 w-full flex flex-col items-center">
+
+                <h1 class="font-heading font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white uppercase leading-tight max-w-3xl reveal">
+                    <span data-i18n="heroLine1">Nerdifying the</span> <br>
+                    <span class="text-r2" data-i18n="heroLine2">automotive culture</span>
+                </h1>
+
+                <p class="font-heading text-base md:text-xl text-gray-300 tracking-widest uppercase -mt-2 reveal reveal-delay-1" data-i18n="tagline">
+                    one car at a time...
+                </p>
+
+                <div class="w-full max-w-2xl px-2 pt-2 reveal reveal-delay-2">
+                    <div class="relative flex items-center">
+                        <input type="text" id="heroSearchInput" placeholder="Search engine code, chassis, specs..."
+                               data-i18n-placeholder="searchPlaceholder"
+                               class="w-full bg-c2 text-white placeholder-gray-400 font-body text-base md:text-lg rounded-full py-4 pl-14 pr-32 border border-r1 focus:border-r3 focus:outline-none transition-all">
+                        <i class="fa-solid fa-magnifying-glass absolute left-5 text-r2 text-xl pointer-events-none"></i>
+                        <button id="heroSearchBtn" class="absolute right-2 px-6 py-2.5 btn-primary text-white font-heading text-lg uppercase rounded-full" data-i18n="searchBtn">Search</button>
+                    </div>
+                    <div id="searchResultsCard" class="hidden mt-3 bg-c2 border border-[#222222] rounded-xl p-4 text-left space-y-2 max-h-72 overflow-y-auto shadow-2xl"></div>
+                </div>
+
+                <div class="flex items-center justify-center gap-3 sm:gap-5 pt-3 pb-1 flex-wrap reveal reveal-delay-3" id="flagRow">
+                    <!-- flag chips injected by home.js -->
+                </div>
+            </div>
+
+            <div id="achievementsStrip" class="w-full max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mt-10 md:mt-14 px-2 relative z-20">
+                <div class="achv-card reveal bg-c2/90 border border-[#222222] rounded-2xl p-6 md:p-8 flex flex-col items-center text-center gap-2 shadow-xl">
+                    <i class="fa-solid fa-users text-r2 text-2xl mb-1"></i>
+                    <div class="font-heading font-bold text-3xl md:text-4xl text-white"><span class="achv-counter" data-target="1" data-suffix="M+">0</span></div>
+                    <div class="text-gray-400 font-body text-sm md:text-base uppercase tracking-wide" data-i18n="statPeopleReached"></div>
+                </div>
+                <div class="achv-card reveal reveal-delay-1 bg-c2/90 border border-[#222222] rounded-2xl p-6 md:p-8 flex flex-col items-center text-center gap-2 shadow-xl">
+                    <i class="fa-solid fa-car-side text-r2 text-2xl mb-1"></i>
+                    <div class="font-heading font-bold text-3xl md:text-4xl text-white"><span class="achv-counter" data-target="150" data-suffix="+">0</span></div>
+                    <div class="text-gray-400 font-body text-sm md:text-base uppercase tracking-wide" data-i18n="statVehicles"></div>
+                </div>
+                <div class="achv-card reveal reveal-delay-2 bg-c2/90 border border-[#222222] rounded-2xl p-6 md:p-8 flex flex-col items-center text-center gap-2 shadow-xl">
+                    <i class="fa-solid fa-trophy text-r2 text-2xl mb-1"></i>
+                    <div class="font-heading font-bold text-2xl md:text-3xl text-white">#1</div>
+                    <div class="text-gray-400 font-body text-sm md:text-base uppercase tracking-wide" data-i18n="statPlatform"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= FEATURED STRIP ======================= -->
+        <section class="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-24">
+            <div class="livery-stripe mb-6"></div>
+            <div class="flex items-end justify-between flex-wrap gap-4 mb-8 reveal">
+                <h2 class="font-heading font-bold text-3xl md:text-4xl text-white uppercase tracking-wide stripe-tick">Recently added</h2>
+                <a href="library.html" class="font-heading text-r2 hover:text-r3 uppercase text-sm tracking-wide transition-colors" data-i18n="exploreLibrary"></a>
+            </div>
+            <div id="featuredGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- skeleton / cards injected by home.js -->
+            </div>
+        </section>
+    </main>
+
+    <button id="backToTop" aria-label="Back to top" class="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-r1 hover:bg-r2 text-white flex items-center justify-center shadow-xl">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <footer id="sd-footer" class="bg-c2 border-t border-[#1A1A1A] py-6 text-center text-xs text-gray-500 font-body"></footer>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/home.js"></script>
+    <script>SD.init('home');</script>
+</body>
+</html>
