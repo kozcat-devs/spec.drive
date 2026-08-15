@@ -1,0 +1,184 @@
+[
+  {
+    "id": "nissan-gtr-r35",
+    "brand": "Nissan",
+    "name": "GT-R R35",
+    "year": "2025",
+    "country": "Japan",
+    "countryFlag": "jp",
+    "price": "$130,000 - $230,000",
+    "topSpeed": "196 - 205 mph (315 - 330 km/h)",
+    "zeroToHundred": "2.5s - 2.9s (0-60 mph)",
+    "image": "assets/cars/nissan-gtr-r35.png",
+    "summary": "The 2025 Nissan GT-R R35 marks the final, highly refined iteration of the legendary platform, likely concluding with special T-spec and NISMO editions.",
+    "specs": [
+      { "label": "Engine", "value": "Hand-built 3.8-liter twin-turbo V6 (VR38DETT)" },
+      { "label": "Performance", "value": "Premium Edition: 565 horsepower and 467 lb-ft of torque. NISMO/T-spec: 600 horsepower and 481 lb-ft of torque." },
+      { "label": "Drivetrain", "value": "ATTESA E-TS all-wheel-drive system with a 6-speed dual-clutch rear transaxle." },
+      { "label": "2025 Changes (JDM/T-spec)", "value": "Introduction of new T-spec and Track Edition models with special NISMO-tuned suspension, carbon ceramic brakes, and enhanced, lighter engine components (piston rings, connecting rods)." },
+      { "label": "Exterior", "value": "Updated aerodynamics, featuring a revised front bumper, grille, and a new, larger rear wing for the Nismo/T-spec variants." },
+      { "label": "Interior", "value": "Combination of Alcantara and leather, with special Blue Heaven interior color options for T-spec models." }
+    ]
+  },
+  {
+    "id": "koenigsegg-ccgt",
+    "brand": "Koenigsegg",
+    "name": "CCGT",
+    "year": "2007",
+    "country": "Sweden",
+    "countryFlag": "se",
+    "price": "$4,400,000",
+    "topSpeed": "344 km/h",
+    "zeroToHundred": "3.0s (0-100 km/h)",
+    "image": "assets/cars/koenigsegg-ccgt.jpg",
+    "summary": "The Koenigsegg CCGT was never meant to sit under showroom lights. Built as Koenigsegg's ambitious entry into GT1 racing and Le Mans, it was engineered to challenge the world's greatest race cars — before a sudden FIA regulation change ended its racing career before it ever competed. Only one prototype survives today, making it one of the rarest and most forgotten Koenigseggs ever created.",
+    "specs": [
+      { "label": "Engine", "value": "Naturally aspirated 5.0-litre V8 producing 600 horsepower — the maximum allowed under GT1 regulations." },
+      { "label": "Drivetrain", "value": "Rear-wheel drive via a 6-speed sequential magnesium transaxle gearbox, with straight-cut gears and dog-ring engagement." },
+      { "label": "Chassis & Aero", "value": "Carbon fibre semi-monocoque chassis weighing under 1,000 kg before mandatory ballast, generating over 600 kg of downforce. Race-spec pushrod suspension, carbon-ceramic brakes, centre-lock magnesium wheels." },
+      { "label": "Legacy", "value": "A one-of-one racing prototype born from Christian von Koenigsegg's dream of conquering Le Mans, remembered not for races won, but for what could have been." }
+    ]
+  },
+  {
+    "id": "mazda-furai",
+    "brand": "Mazda",
+    "name": "Furai",
+    "year": "2008",
+    "country": "Japan",
+    "countryFlag": "jp",
+    "price": "Unobtainable (the only one built was destroyed)",
+    "topSpeed": "290 km/h",
+    "zeroToHundred": "3.0s (0-100 km/h)",
+    "image": "assets/cars/mazda-furai.jpg",
+    "summary": "Unveiled in 2008, the Mazda Furai — Japanese for 'Sound of the Wind' — is one of the greatest automotive masterpieces that never made it to production, a machine sculpted almost entirely by aerodynamics. Developed with real track performance in mind, it blurred the line between race car and road-going fantasy with its screaming rotary soundtrack and futuristic bodywork.",
+    "specs": [
+      { "label": "Chassis", "value": "Built upon a Courage C65 Le Mans Prototype chassis." },
+      { "label": "Engine", "value": "Naturally aspirated 20B three-rotor rotary engine producing around 450 horsepower, designed to run on ethanol fuel." },
+      { "label": "Weight", "value": "Just 675 kg." },
+      { "label": "Drivetrain", "value": "Rear-wheel drive via a 6-speed sequential gearbox." },
+      { "label": "Fate", "value": "The one and only Furai was destroyed in a fire during a media test in 2008, leaving the world wondering what could have been." }
+    ]
+  },
+  {
+    "id": "bugatti-chiron-super-sport",
+    "brand": "Bugatti",
+    "name": "Chiron Super Sport",
+    "year": "2022",
+    "country": "France",
+    "countryFlag": "fr",
+    "price": "$3,800,000 - $3,900,000",
+    "topSpeed": "440 km/h (electronically limited)",
+    "zeroToHundred": "2.4s (0-100 km/h)",
+    "image": "assets/cars/bugatti-chiron-super-sport.jpg",
+    "summary": "The Bugatti Chiron Super Sport represents the absolute peak of automotive engineering, a machine designed without compromise to push the boundaries of speed, luxury, and performance. Every curve of its elongated, aerodynamic 'longtail' body has been sculpted to optimize airflow and reduce drag, while carbon fibre construction keeps it both light and rigid.",
+    "specs": [
+      { "label": "Engine", "value": "8.0-litre quad-turbocharged W16 producing 1,600 PS (1,578 hp) — a masterpiece of engineering that pulls relentlessly, even at extreme speed." },
+      { "label": "Transmission", "value": "7-speed dual-clutch, shifting from 6th to 7th gear at 420 km/h under full load." },
+      { "label": "Design", "value": "A 'longtail' rear extends the body to hold laminar airflow longer, cutting aerodynamic stall by over 40%, while distinguishing it visually from the standard Chiron." },
+      { "label": "Top Speed Note", "value": "The standard production Super Sport is electronically limited to 440 km/h. Its limited-edition sibling, the 30-unit Chiron Super Sport 300+, had its limiter removed and set a record 490.484 km/h (304.773 mph) run in 2019 — the figure often quoted for this model." }
+    ]
+  },
+  {
+    "id": "bugatti-bolide",
+    "brand": "Bugatti",
+    "name": "Bolide",
+    "year": "2024",
+    "country": "France",
+    "countryFlag": "fr",
+    "price": "~$4,700,000 (production run of 40 units)",
+    "topSpeed": "500+ km/h (theoretical, per Bugatti simulation)",
+    "zeroToHundred": "2.2s (0-100 km/h)",
+    "image": "assets/cars/bugatti-bolide.jpg",
+    "summary": "The Bugatti Bolide is one of the most extreme track-focused machines ever created — a lightweight, uncompromising expression of Bugatti performance. Built around an ultra-rigid carbon fibre monocoque and developed with motorsport-grade aerodynamics, it strips away every road-car luxury in pursuit of raw speed, downforce, and lap-time capability.",
+    "specs": [
+      { "label": "Engine", "value": "8.0-litre quad-turbocharged W16 producing 1,578 hp (1,600 PS) on standard pump fuel, or up to 1,825 hp (1,850 PS) on 110-octane racing fuel." },
+      { "label": "Drivetrain", "value": "7-speed dual-clutch transmission driving all four wheels through an advanced all-wheel-drive system." },
+      { "label": "Weight", "value": "1,240 kg dry — or 1,450 kg in FIA-compliant race trim — giving a power-to-weight ratio around 0.67-0.85 kg/hp, in Formula 1 territory." },
+      { "label": "Aerodynamics", "value": "Roughly 1,800 kg of downforce at 320 km/h thanks to an enormous rear wing, front splitter, underbody venturi tunnels, and an aggressive diffuser. Even the roof scoop uses an adaptive, morphable surface inspired by motorsport aero." },
+      { "label": "Chassis & Brakes", "value": "Race-style pushrod suspension, forged magnesium wheels with centre-lock hubs, and carbon-carbon racing brakes built for repeated high-speed track abuse." },
+      { "label": "Cockpit", "value": "A stripped, purposeful race interior: fixed-seat layout, six-point harnesses, FIA-style safety systems, a quick-release steering wheel, and digital race instrumentation. Non-road-legal, on full racing slicks." }
+    ]
+  },
+  {
+    "id": "ferrari-california",
+    "brand": "Ferrari",
+    "name": "California",
+    "year": "2008",
+    "country": "Italy",
+    "countryFlag": "it",
+    "price": "$90,000 - $150,000 (used market)",
+    "topSpeed": "310 km/h",
+    "zeroToHundred": "3.9s (0-100 km/h)",
+    "image": "assets/cars/ferrari-california.jpg",
+    "instagram": "https://www.instagram.com/spec.drive/reel/DbXoqsQP_6q/",
+    "summary": "Introduced in 2008 as Ferrari's first front-engine V8 grand tourer, the California was one of the most versatile cars the brand had ever built — combining everyday usability with genuine Ferrari performance, wrapped in a retractable hardtop and 2+2 seating layout.",
+    "specs": [
+      { "label": "Engine", "value": "Naturally aspirated 4.3-litre V8 producing 460 hp and 485 Nm of torque, sending power to the rear wheels through a 7-speed dual-clutch transmission." },
+      { "label": "Performance", "value": "0-100 km/h in around 3.9 seconds, top speed of 310 km/h — Ferrari's own figures state 'less than 4 seconds' to 100 km/h." },
+      { "label": "Chassis", "value": "Lightweight aluminium chassis with double-wishbone front suspension and multi-link rear, plus Ferrari's F1-inspired gearbox technology." },
+      { "label": "Milestone", "value": "The first Ferrari road car with a front-mounted V8 and the first to use a direct-injection V8 engine — an important step in making Ferrari performance more usable day-to-day." }
+    ]
+  },
+  {
+    "id": "porsche-959-s",
+    "brand": "Porsche",
+    "name": "959 S",
+    "year": "1988",
+    "country": "Germany",
+    "countryFlag": "de",
+    "price": "$2,500,000 - $5,500,000",
+    "topSpeed": "339 km/h (211 mph)",
+    "zeroToHundred": "3.7s (0-100 km/h)",
+    "image": "assets/cars/porsche-959-s.jpg",
+    "instagram": "https://www.instagram.com/spec.drive/reel/DbVurKTPLCE/",
+    "summary": "The Porsche 959 S wasn't merely an evolution of the already revolutionary 959 — it was Porsche's ultimate expression of 1980s engineering. Originally conceived for Group B rally homologation, the 959 introduced technology decades ahead of its time, and the ultra-rare S variant pushed it even further.",
+    "specs": [
+      { "label": "Engine", "value": "Sequentially twin-turbocharged 2.85-litre flat-six, uprated with larger turbochargers to 508-515 hp — up from 444-450 hp in the standard 959." },
+      { "label": "Drivetrain", "value": "Porsche's intelligent all-wheel-drive system, decades ahead of its rivals, paired with a 6-speed manual." },
+      { "label": "Production", "value": "Just 29 examples of the 959 S were built, stripped of comfort features and lightened versus the standard car, making it one of the rarest Porsches ever made." },
+      { "label": "Legacy", "value": "One of the fastest production cars of its era, and a technological showcase that helped shape decades of high-performance road cars that followed." }
+    ]
+  },
+  {
+    "id": "lotus-carlton",
+    "brand": "Lotus",
+    "name": "Carlton (Omega)",
+    "year": "1990",
+    "country": "Britain",
+    "countryFlag": "gb",
+    "price": "$70,000 - $115,000",
+    "topSpeed": "283 km/h (176 mph)",
+    "zeroToHundred": "5.1s - 5.4s (0-100 km/h)",
+    "image": "assets/cars/lotus-carlton.jpg",
+    "instagram": "https://www.instagram.com/spec.drive/reel/DbTVCdsP0ew/",
+    "summary": "The Lotus Carlton proved that practicality and insanity could coexist. Developed through a collaboration between Lotus and Vauxhall/Opel, an ordinary executive sedan was transformed into one of the fastest four-door cars the world had ever seen — so quick that British politicians openly questioned whether it should remain road legal.",
+    "specs": [
+      { "label": "Engine", "value": "Twin-turbocharged 3.6-litre inline-six producing 377 hp and 419 lb-ft of torque, sent to the rear wheels via a 6-speed ZF manual." },
+      { "label": "Reputation", "value": "Nicknamed the 'bank robber's car' after criminals used one to outrun UK police vehicles, cementing its infamous reputation." },
+      { "label": "Top Speed Note", "value": "Officially rated at 176 mph (283 km/h), making it the fastest production sedan in the world at launch. A viral claim of an unrestricted 305 km/h run has circulated online, but it traces back to an unverified YouTube demonstration rather than an official record, so we've kept the sourced 283 km/h figure here." },
+      { "label": "Production", "value": "Just 950 units were built (320 right-hand-drive Carltons, 630 Omegas), making surviving examples highly sought-after today." }
+    ]
+  },
+  {
+    "id": "sauber-mercedes-c11",
+    "brand": "Mercedes-Benz",
+    "name": "Sauber C11",
+    "year": "1990",
+    "country": "Germany",
+    "countryFlag": "de",
+    "price": "$7,500,000 - $11,000,000",
+    "topSpeed": "400+ km/h (low-drag configuration)",
+    "zeroToHundred": "~3.0s (0-100 km/h)",
+    "image": "assets/cars/sauber-mercedes-c11.jpg",
+    "instagram": "https://www.instagram.com/spec.drive/reel/DbPY67yP9V_/",
+    "summary": "A legend of Group C, the Sauber-Mercedes C11 was built with one purpose: domination. Its thunderous twin-turbocharged V8 and fighter-jet-inspired aerodynamics made it one of the most feared endurance racers of the early 1990s — and its raw sound and brutal speed remain unforgettable today.",
+    "specs": [
+      { "label": "Engine", "value": "5.0-litre twin-turbocharged Mercedes-Benz M119 V8, producing 730-850 hp in race trim (and up to 950-960 hp unrestricted)." },
+      { "label": "Weight", "value": "Around 905 kg, giving an explosive power-to-weight ratio and relentless pace." },
+      { "label": "Top Speed", "value": "Over 400 km/h on long straights in low-drag configuration." },
+      { "label": "0-100 km/h", "value": "Approximately 3.0 seconds." },
+      { "label": "Race Record", "value": "Dominated the 1990 World Sportscar Championship, winning seven of the nine races it entered, on the way to the constructors' title." },
+      { "label": "Construction", "value": "Advanced carbon fibre monocoque chassis (a first for the team, replacing the C9's aluminium construction), a massive rear wing, and the unmistakable silver 'Silver Arrow' livery." }
+    ]
+  }
+]
